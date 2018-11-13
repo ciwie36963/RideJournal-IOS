@@ -178,6 +178,9 @@
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Bmi-6N-iP6">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="fdZ-7p-qKT" id="hNu-Nd-cFB"/>
+                                        </connections>
                                     </mapView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="TUq-31-Vrj">
                                         <rect key="frame" x="0.0" y="443" width="375" height="41"/>
@@ -202,7 +205,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="d5o-Jb-hZj">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="41"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Money Saved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYg-Bs-7W2">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Travelled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYg-Bs-7W2">
                                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -249,16 +252,33 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KSC-MA-QTc"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Ride" largeTitleDisplayMode="never" id="ysw-do-1mA"/>
+                    <navigationItem key="navigationItem" title="Ride" largeTitleDisplayMode="always" id="ysw-do-1mA"/>
                     <connections>
+                        <outlet property="distanceTravelled" destination="Uhx-EV-jJx" id="KWC-0g-Gy2"/>
+                        <outlet property="mapView" destination="Bmi-6N-iP6" id="xNU-le-RQn"/>
                         <outlet property="stackView" destination="lV4-uX-dOJ" id="aNd-Nr-unu"/>
-                        <outlet property="startTracking" destination="ZGA-hT-sQ7" id="gUu-SZ-7DN"/>
-                        <outlet property="stopTracking" destination="S5T-bL-BIs" id="ZTH-F1-OQg"/>
+                        <outlet property="timeTravelled" destination="Qt3-oX-zlu" id="rMQ-h8-uRE"/>
+                        <segue destination="9aO-bq-Ypn" kind="show" identifier="rideFinishedSegue" id="I9y-jT-rGk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ATB-L4-X3s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1792.8" y="520.93596059113304"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fh5-eX-Pfr">
+            <objects>
+                <viewController id="9aO-bq-Ypn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yFW-Ka-fEt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="BCM-i0-liw"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="viH-Hx-DdJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2722" y="522"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hq3-4g-j1C">

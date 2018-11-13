@@ -19,14 +19,12 @@ struct Ride {
     let vehicle : VehicleType
     let moneySaved : Double
     let rideToWork : Bool
-    var imageData: Data?
     
-    init(name: String, distance: Double, vehicle : VehicleType, moneySaved : Double, rideToWork : Bool, imageData: Data? = nil) {
+    init(name: String, distance: Double, vehicle : VehicleType, moneySaved : Double, rideToWork : Bool) {
         self.name = name
         self.distance = distance
         self.vehicle = vehicle
         self.moneySaved = moneySaved
         self.rideToWork = rideToWork
-        self.imageData = imageData
     }
 }
