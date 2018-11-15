@@ -9,13 +9,13 @@
 import Foundation
 
 struct Bike {
-    let name : String
     let refundTravelExpensesPerKm : Double
-    var imageData: Data?
+    let fuelUsageOfCarNotUsed : Double
+    let isBike : Bool
     
-    init(name: String, refundTravelExpensesPerKm: Double, imageData: Data? = nil) {
-        self.name = name
+    init(refundTravelExpensesPerKm: Double, fuelUsageOfCarNotUsed : Double , isBike : Bool) {
         self.refundTravelExpensesPerKm = refundTravelExpensesPerKm
-        self.imageData = imageData
+        self.fuelUsageOfCarNotUsed = fuelUsageOfCarNotUsed
+        self.isBike = isBike
     }
 }

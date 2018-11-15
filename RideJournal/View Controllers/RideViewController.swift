@@ -17,12 +17,17 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     @IBOutlet weak var distanceTravelled: UILabel!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var stopTrackingButton: UIButton!
+    
     
     var locationManager = CLLocationManager()
     var locationList: [CLLocation] = []
     var distance = Measurement(value: 0, unit: UnitLength.meters)
     var timer: Timer?
     var seconds = 0
+    var bike : Bike?
+    var car : Car?
+    var ride : Ride?
     
     //standardFunctions
     override func viewDidLoad() {
@@ -66,6 +71,7 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             self.updateCounterAndScreen()
         }
         
+        stopTrackingButton.isEnabled = true
         locationManager.startUpdatingLocation()
         print("Updating Location started")
     }
@@ -73,8 +79,40 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     @IBAction func stopTrackingLocation(_ sender: UIButton) {
         timer?.invalidate()
         
+        let alert = UIAlertController(title: "End ride?", message: "Are you sure you want to end the ride?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+            self.saveTheRide()
+        })
+        alert.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
+            _ = self.navigationController?.popToRootViewController(animated: true)
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true)
+        
         locationManager.stopUpdatingLocation()
         print("Updating Location stopped")
+    }
+    
+    func saveTheRide() {
+        //rideFinishedSegue
+        let distanceRide = Double(distanceTravelled.text!)
+        var vehicle = VehicleType.car //fake init
+        if (car?.isCar == true) {
+            vehicle = VehicleType.car
+        } else if (bike?.isBike == true) {
+            vehicle = VehicleType.bike
+        }
+        let moneySaved = ride?.calculateMoneySaved()
+        let rideToWork = true //al een ride aanmaken in scherm hiervoor(detail)
+        let time = timeTravelled.text
+        print(distanceRide)//probleem, zal String moeten worden
+        print(vehicle)
+        print(moneySaved)//probleem(matthias)
+        print(rideToWork)
+        print(time)
+        //je kan enkel zo iets meegeven als je gebruikt maakt van een prepareForUnwind
+        ride = Ride(distanceRide: distanceRide!, vehicle: vehicle, moneySaved: moneySaved!, rideToWork: rideToWork, time: time!)
+        print(ride)
     }
     
     //StandardFunctionDueToExtending
@@ -86,7 +124,7 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         
         for newLocation in locations {
             let interval = newLocation.timestamp.timeIntervalSinceNow
-            guard newLocation.horizontalAccuracy < 20 && interval < 10 else { continue }
+            guard interval < 10 && newLocation.horizontalAccuracy < 20 else { continue }
             if let lastLocation = locationList.last {
                 let difference2Locations = newLocation.distance(from: lastLocation)
                 distance = distance + Measurement(value: difference2Locations, unit: UnitLength.meters)
@@ -100,23 +138,13 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let polyline = overlay as? MKPolyline else {
-            return MKOverlayRenderer(overlay: overlay)
-        }
+        guard let polyline = overlay as? MKPolyline else { return MKOverlayRenderer(overlay: overlay)}
         let drawImage = MKPolylineRenderer(polyline: polyline)
         drawImage.strokeColor = .black
         drawImage.lineWidth = 5
         return drawImage
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
+    // MARK: - Navigation
 }

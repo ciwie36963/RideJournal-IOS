@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1148BD91219AF59A0080F3FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148BD90219AF59A0080F3FA /* AppDelegate.swift */; };
-		1148BD93219AF59A0080F3FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148BD92219AF59A0080F3FA /* ViewController.swift */; };
 		1148BD96219AF59A0080F3FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1148BD94219AF59A0080F3FA /* Main.storyboard */; };
 		1148BD98219AF59B0080F3FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1148BD97219AF59B0080F3FA /* Assets.xcassets */; };
 		1148BD9B219AF59B0080F3FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1148BD99219AF59B0080F3FA /* LaunchScreen.storyboard */; };
@@ -16,13 +15,14 @@
 		11762302219B05560061125A /* Bike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11762301219B05560061125A /* Bike.swift */; };
 		11762304219B05660061125A /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11762303219B05660061125A /* Car.swift */; };
 		11762308219B0C570061125A /* RideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11762307219B0C570061125A /* RideViewController.swift */; };
+		1191874F219C235300AB3C16 /* SelectVehicleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1191874E219C235300AB3C16 /* SelectVehicleTableViewController.swift */; };
+		11918751219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11918750219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift */; };
 		11F4AC18219B5E9B008D1496 /* ScreenFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4AC17219B5E9B008D1496 /* ScreenFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1148BD8D219AF59A0080F3FA /* RideJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1148BD90219AF59A0080F3FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1148BD92219AF59A0080F3FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1148BD95219AF59A0080F3FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1148BD97219AF59B0080F3FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1148BD9A219AF59B0080F3FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,6 +31,8 @@
 		11762301219B05560061125A /* Bike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bike.swift; sourceTree = "<group>"; };
 		11762303219B05660061125A /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		11762307219B0C570061125A /* RideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideViewController.swift; sourceTree = "<group>"; };
+		1191874E219C235300AB3C16 /* SelectVehicleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVehicleTableViewController.swift; sourceTree = "<group>"; };
+		11918750219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleDetailsTableViewController.swift; sourceTree = "<group>"; };
 		11F4AC17219B5E9B008D1496 /* ScreenFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,7 +71,6 @@
 				117622FA219B049A0061125A /* Views */,
 				117622F9219B048B0061125A /* View Controllers */,
 				1148BD90219AF59A0080F3FA /* AppDelegate.swift */,
-				1148BD92219AF59A0080F3FA /* ViewController.swift */,
 				1148BD94219AF59A0080F3FA /* Main.storyboard */,
 				1148BD97219AF59B0080F3FA /* Assets.xcassets */,
 				1148BD99219AF59B0080F3FA /* LaunchScreen.storyboard */,
@@ -82,6 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				11762307219B0C570061125A /* RideViewController.swift */,
+				1191874E219C235300AB3C16 /* SelectVehicleTableViewController.swift */,
+				11918750219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -182,13 +185,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1191874F219C235300AB3C16 /* SelectVehicleTableViewController.swift in Sources */,
 				11762300219B05480061125A /* Ride.swift in Sources */,
 				11762304219B05660061125A /* Car.swift in Sources */,
 				11762308219B0C570061125A /* RideViewController.swift in Sources */,
 				11762302219B05560061125A /* Bike.swift in Sources */,
-				1148BD93219AF59A0080F3FA /* ViewController.swift in Sources */,
 				11F4AC18219B5E9B008D1496 /* ScreenFormatter.swift in Sources */,
 				1148BD91219AF59A0080F3FA /* AppDelegate.swift in Sources */,
+				11918751219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
