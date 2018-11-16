@@ -11,6 +11,7 @@
 		1148BD96219AF59A0080F3FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1148BD94219AF59A0080F3FA /* Main.storyboard */; };
 		1148BD98219AF59B0080F3FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1148BD97219AF59B0080F3FA /* Assets.xcassets */; };
 		1148BD9B219AF59B0080F3FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1148BD99219AF59B0080F3FA /* LaunchScreen.storyboard */; };
+		116FF251219F4AEF00EC5269 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116FF250219F4AEF00EC5269 /* MoreTableViewController.swift */; };
 		11762300219B05480061125A /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117622FF219B05480061125A /* Ride.swift */; };
 		11762302219B05560061125A /* Bike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11762301219B05560061125A /* Bike.swift */; };
 		11762304219B05660061125A /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11762303219B05660061125A /* Car.swift */; };
@@ -29,6 +30,7 @@
 		1148BD97219AF59B0080F3FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1148BD9A219AF59B0080F3FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1148BD9C219AF59B0080F3FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		116FF250219F4AEF00EC5269 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		117622FF219B05480061125A /* Ride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
 		11762301219B05560061125A /* Bike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bike.swift; sourceTree = "<group>"; };
 		11762303219B05660061125A /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				1191874E219C235300AB3C16 /* SelectVehicleTableViewController.swift */,
 				11918750219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift */,
 				11EF1423219EE99A00EFB69B /* RidesTableViewController.swift */,
+				116FF250219F4AEF00EC5269 /* MoreTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				11EF1424219EE99A00EFB69B /* RidesTableViewController.swift in Sources */,
 				11762300219B05480061125A /* Ride.swift in Sources */,
 				11762304219B05660061125A /* Car.swift in Sources */,
+				116FF251219F4AEF00EC5269 /* MoreTableViewController.swift in Sources */,
 				11762308219B0C570061125A /* RideViewController.swift in Sources */,
 				11762302219B05560061125A /* Bike.swift in Sources */,
 				11F4AC18219B5E9B008D1496 /* ScreenFormatter.swift in Sources */,
