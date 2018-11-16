@@ -17,6 +17,8 @@
 		11762308219B0C570061125A /* RideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11762307219B0C570061125A /* RideViewController.swift */; };
 		1191874F219C235300AB3C16 /* SelectVehicleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1191874E219C235300AB3C16 /* SelectVehicleTableViewController.swift */; };
 		11918751219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11918750219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift */; };
+		11EF1424219EE99A00EFB69B /* RidesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF1423219EE99A00EFB69B /* RidesTableViewController.swift */; };
+		11EF1426219F0A3900EFB69B /* RideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF1425219F0A3900EFB69B /* RideCell.swift */; };
 		11F4AC18219B5E9B008D1496 /* ScreenFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4AC17219B5E9B008D1496 /* ScreenFormatter.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		11762307219B0C570061125A /* RideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideViewController.swift; sourceTree = "<group>"; };
 		1191874E219C235300AB3C16 /* SelectVehicleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVehicleTableViewController.swift; sourceTree = "<group>"; };
 		11918750219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleDetailsTableViewController.swift; sourceTree = "<group>"; };
+		11EF1423219EE99A00EFB69B /* RidesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesTableViewController.swift; sourceTree = "<group>"; };
+		11EF1425219F0A3900EFB69B /* RideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideCell.swift; sourceTree = "<group>"; };
 		11F4AC17219B5E9B008D1496 /* ScreenFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +89,7 @@
 				11762307219B0C570061125A /* RideViewController.swift */,
 				1191874E219C235300AB3C16 /* SelectVehicleTableViewController.swift */,
 				11918750219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift */,
+				11EF1423219EE99A00EFB69B /* RidesTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -103,6 +108,7 @@
 				11762301219B05560061125A /* Bike.swift */,
 				11762303219B05660061125A /* Car.swift */,
 				11F4AC17219B5E9B008D1496 /* ScreenFormatter.swift */,
+				11EF1425219F0A3900EFB69B /* RideCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -186,6 +192,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1191874F219C235300AB3C16 /* SelectVehicleTableViewController.swift in Sources */,
+				11EF1426219F0A3900EFB69B /* RideCell.swift in Sources */,
+				11EF1424219EE99A00EFB69B /* RidesTableViewController.swift in Sources */,
 				11762300219B05480061125A /* Ride.swift in Sources */,
 				11762304219B05660061125A /* Car.swift in Sources */,
 				11762308219B0C570061125A /* RideViewController.swift in Sources */,

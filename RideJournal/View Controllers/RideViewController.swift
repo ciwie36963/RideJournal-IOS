@@ -28,6 +28,7 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     var bike : Bike?
     var car : Car?
     var ride : Ride?
+    var rides = [Ride]()
     
     //standardFunctions
     override func viewDidLoad() {
@@ -82,6 +83,7 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         let alert = UIAlertController(title: "End ride?", message: "Are you sure you want to end the ride?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
             self.saveTheRide()
+            _ = self.navigationController?.popToRootViewController(animated: true)
         })
         alert.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
             _ = self.navigationController?.popToRootViewController(animated: true)
@@ -94,25 +96,27 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     }
     
     func saveTheRide() {
-        //rideFinishedSegue
-        let distanceRide = Double(distanceTravelled.text!)
-        var vehicle = VehicleType.car //fake init
-        if (car?.isCar == true) {
-            vehicle = VehicleType.car
-        } else if (bike?.isBike == true) {
-            vehicle = VehicleType.bike
+        var moneySaved = 0.0//init
+        let distanceRide = distanceTravelled.text!
+        //vehicle wordt al gedaan in vorig scherm
+        if (car?.refundTravelExpensesPerKm == nil) {
+            moneySaved = (ride?.calculateMoneySaved(distance: ScreenFormatter.distance(distance), refundTravelExpensesPerKm: (bike?.refundTravelExpensesPerKm)!, fuelUsagePerKm: (bike?.fuelUsageOfCarNotUsed)!))!
+        } else if (bike?.refundTravelExpensesPerKm == nil) {
+            moneySaved = (ride?.calculateMoneySaved(distance: ScreenFormatter.distance(distance), refundTravelExpensesPerKm: (car?.refundTravelExpensesPerKm)!, fuelUsagePerKm: (car?.fuelUsagePerKm)!))!
         }
-        let moneySaved = ride?.calculateMoneySaved()
-        let rideToWork = true //al een ride aanmaken in scherm hiervoor(detail)
+        //rideToWork wordt al gedaan in vorig scherm
         let time = timeTravelled.text
-        print(distanceRide)//probleem, zal String moeten worden
-        print(vehicle)
-        print(moneySaved)//probleem(matthias)
-        print(rideToWork)
-        print(time)
         //je kan enkel zo iets meegeven als je gebruikt maakt van een prepareForUnwind
-        ride = Ride(distanceRide: distanceRide!, vehicle: vehicle, moneySaved: moneySaved!, rideToWork: rideToWork, time: time!)
-        print(ride)
+        ride = Ride(distanceRide: distanceRide, vehicle: (ride?.vehicle)!, moneySaved: moneySaved, rideToWork: (ride?.rideToWork)!, time: time!)
+        
+        if ((Ride.loadRides()) == nil) {
+            rides.append(ride!)
+        } else {
+            rides = Ride.loadRides()!
+            rides.append(ride!)
+        }
+        
+        Ride.saveRides(rides)
     }
     
     //StandardFunctionDueToExtending

@@ -9,7 +9,7 @@
 import Foundation
 
 struct Car {
-    let refundTravelExpensesPerKm : Double
+    var refundTravelExpensesPerKm : Double
     let fuelUsagePerKm : Double
     let isCar : Bool
     

@@ -20,6 +20,7 @@ class vehicleDetailsTableViewController: UITableViewController {
     
     var car: Car?
     var bike: Bike?
+    var ride : Ride?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,7 @@ class vehicleDetailsTableViewController: UITableViewController {
     @IBAction func editingChangedTravelAllowanceTextField(_ sender: Any) {
         
         let travelAllowanceTextCheck = NSRange(location: 0, length: travelAllowanceTextField.text!.utf16.count)
-        let regex = try! NSRegularExpression(pattern: "^[1-9]\\d*(\\.\\d+)?$")
+        let regex = try! NSRegularExpression(pattern: "^[0-9]\\d*(\\.\\d+)?$")
         let regexTravelAllowance = regex.firstMatch(in: travelAllowanceTextField.text!, options: [], range: travelAllowanceTextCheck)
         
         if (regexTravelAllowance != nil)  {
@@ -103,17 +104,37 @@ class vehicleDetailsTableViewController: UITableViewController {
             print("save pressed + segue done")
             if (car?.isCar == true) {
                 let fuelUsagePerKm = Double(carConsumeTextField.text!)
-                let refundTravelExpensesPerKm = Double(travelAllowanceTextField.text!)
-                car = Car(refundTravelExpensesPerKm: refundTravelExpensesPerKm!, fuelUsagePerKm: fuelUsagePerKm!, isCar: true)
+                var refundTravelExpensesPerKm = 0.0
+                if (travelAllowanceTextField.text != "") {
+                    refundTravelExpensesPerKm = Double(travelAllowanceTextField.text!)!
+                }
+                car = Car(refundTravelExpensesPerKm: refundTravelExpensesPerKm, fuelUsagePerKm: fuelUsagePerKm!, isCar: true)
                 let destination = segue.destination as! RideViewController
                 destination.car = car
+                if (workSwitch.isOn == true) {
+                    ride = Ride(distanceRide: "", vehicle: VehicleType.car, moneySaved: 0, rideToWork: true, time: "")
+                    destination.ride = ride
+                } else {
+                    ride = Ride(distanceRide: "", vehicle: VehicleType.car, moneySaved: 0, rideToWork: false, time: "")
+                    destination.ride = ride
+                }
                 
             } else if (bike?.isBike == true) {
                 let fuelUsageOfCarNotUsed = Double(carConsumeTextField.text!)
-                let refundTravelExpensesPerKm = Double(travelAllowanceTextField.text!)
-                bike = Bike(refundTravelExpensesPerKm: refundTravelExpensesPerKm!, fuelUsageOfCarNotUsed: fuelUsageOfCarNotUsed!, isBike: true)
+                var refundTravelExpensesPerKm = 0.0
+                if (travelAllowanceTextField.text != "") {
+                    refundTravelExpensesPerKm = Double(travelAllowanceTextField.text!)!
+                }
+                bike = Bike(refundTravelExpensesPerKm: refundTravelExpensesPerKm, fuelUsageOfCarNotUsed: fuelUsageOfCarNotUsed!, isBike: true)
                 let destination = segue.destination as! RideViewController
                 destination.bike = bike
+                if (workSwitch.isOn == true) {
+                    ride = Ride(distanceRide: "", vehicle: VehicleType.bike, moneySaved: 0, rideToWork: true, time: "")
+                    destination.ride = ride
+                } else {
+                    ride = Ride(distanceRide: "", vehicle: VehicleType.bike, moneySaved: 0, rideToWork: false, time: "")
+                    destination.ride = ride
+                }
             }
             
         }

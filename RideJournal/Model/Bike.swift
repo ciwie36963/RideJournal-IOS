@@ -9,7 +9,7 @@
 import Foundation
 
 struct Bike {
-    let refundTravelExpensesPerKm : Double
+    var refundTravelExpensesPerKm : Double
     let fuelUsageOfCarNotUsed : Double
     let isBike : Bool
     
