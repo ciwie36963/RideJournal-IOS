@@ -112,10 +112,10 @@ class vehicleDetailsTableViewController: UITableViewController {
                 let destination = segue.destination as! RideViewController
                 destination.car = car
                 if (workSwitch.isOn == true) {
-                    ride = Ride(distanceRide: "", vehicle: VehicleType.car, moneySaved: 0, rideToWork: true, time: "")
+                    ride = Ride(distanceRide: "", vehicle: VehicleType.car, moneySaved: 0, rideToWork: true, time: "" , date: "")
                     destination.ride = ride
                 } else {
-                    ride = Ride(distanceRide: "", vehicle: VehicleType.car, moneySaved: 0, rideToWork: false, time: "")
+                    ride = Ride(distanceRide: "", vehicle: VehicleType.car, moneySaved: 0, rideToWork: false, time: "", date : "")
                     destination.ride = ride
                 }
                 
@@ -129,10 +129,10 @@ class vehicleDetailsTableViewController: UITableViewController {
                 let destination = segue.destination as! RideViewController
                 destination.bike = bike
                 if (workSwitch.isOn == true) {
-                    ride = Ride(distanceRide: "", vehicle: VehicleType.bike, moneySaved: 0, rideToWork: true, time: "")
+                    ride = Ride(distanceRide: "", vehicle: VehicleType.bike, moneySaved: 0, rideToWork: true, time: "", date : "")
                     destination.ride = ride
                 } else {
-                    ride = Ride(distanceRide: "", vehicle: VehicleType.bike, moneySaved: 0, rideToWork: false, time: "")
+                    ride = Ride(distanceRide: "", vehicle: VehicleType.bike, moneySaved: 0, rideToWork: false, time: "", date : "")
                     destination.ride = ride
                 }
             }

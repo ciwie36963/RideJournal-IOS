@@ -25,13 +25,15 @@ class Ride : NSObject, NSCoding {
     var moneySaved : Double
     var rideToWork : Bool
     var time: String
+    var date: String?
     
-    init(distanceRide: String, vehicle : VehicleType, moneySaved : Double, rideToWork : Bool, time : String) {
+    init(distanceRide: String, vehicle : VehicleType, moneySaved : Double, rideToWork : Bool, time : String, date: String?) {
         self.distanceRide = distanceRide
         self.vehicle = vehicle
         self.moneySaved = moneySaved
         self.rideToWork = rideToWork
         self.time = time
+        self.date = date
     }
     
     struct PropertyKey {
@@ -40,6 +42,7 @@ class Ride : NSObject, NSCoding {
         static let moneySaved = "moneySaved"
         static let rideToWork = "rideToWork"
         static let time = "time"
+        static let date = "date"
     }
     
     func calculateMoneySaved(distance: String, refundTravelExpensesPerKm : Double, fuelUsagePerKm : Double) -> Double {
@@ -104,8 +107,9 @@ class Ride : NSObject, NSCoding {
         let moneySaved = aDecoder.decodeDouble(forKey: PropertyKey.moneySaved) as Double
         let rideToWork = aDecoder.decodeBool(forKey: PropertyKey.rideToWork) as Bool
         let time = aDecoder.decodeObject(forKey: PropertyKey.time) as? String
+        let date = aDecoder.decodeObject(forKey: PropertyKey.date) as? String
         
-        self.init(distanceRide : distanceRide!, vehicle : vehicle!, moneySaved : moneySaved, rideToWork : rideToWork, time : time!)
+        self.init(distanceRide : distanceRide!, vehicle : vehicle!, moneySaved : moneySaved, rideToWork : rideToWork, time : time!, date : date)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -114,6 +118,7 @@ class Ride : NSObject, NSCoding {
         aCoder.encode(moneySaved, forKey: PropertyKey.moneySaved)
         aCoder.encode(rideToWork, forKey: PropertyKey.rideToWork)
         aCoder.encode(time, forKey: PropertyKey.time)
+        aCoder.encode(date, forKey: PropertyKey.date)
     }
     
     

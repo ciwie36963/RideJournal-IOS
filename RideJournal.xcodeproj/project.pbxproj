@@ -72,9 +72,7 @@
 		1148BD8F219AF59A0080F3FA /* RideJournal */ = {
 			isa = PBXGroup;
 			children = (
-				117622FC219B04E70061125A /* Other Controllers */,
 				117622FB219B04A20061125A /* Model */,
-				117622FA219B049A0061125A /* Views */,
 				117622F9219B048B0061125A /* View Controllers */,
 				1148BD90219AF59A0080F3FA /* AppDelegate.swift */,
 				1148BD94219AF59A0080F3FA /* Main.storyboard */,
@@ -97,13 +95,6 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		117622FA219B049A0061125A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		117622FB219B04A20061125A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,13 +105,6 @@
 				11EF1425219F0A3900EFB69B /* RideCell.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		117622FC219B04E70061125A /* Other Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Other Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

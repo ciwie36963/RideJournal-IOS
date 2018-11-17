@@ -39,7 +39,7 @@ class RidesTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "rideCell") as? RideCell else {
             fatalError("Could not dequeue a cell")
         }
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        
         let ride = rides[indexPath.row]
         cell.distanceLabel.text = ride.distanceRide
         cell.vehicleTypeLabel.text = String(Substring(ride.vehicle.rawValue))
@@ -67,6 +67,7 @@ class RidesTableViewController: UITableViewController {
         if editingStyle == .delete {
             rides.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            //alles tot hier standaard buiten disst
             Ride.saveRides(rides)
         }
     }

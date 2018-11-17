@@ -107,7 +107,7 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         //rideToWork wordt al gedaan in vorig scherm
         let time = timeTravelled.text
         //je kan enkel zo iets meegeven als je gebruikt maakt van een prepareForUnwind
-        ride = Ride(distanceRide: distanceRide, vehicle: (ride?.vehicle)!, moneySaved: moneySaved, rideToWork: (ride?.rideToWork)!, time: time!)
+        ride = Ride(distanceRide: distanceRide, vehicle: (ride?.vehicle)!, moneySaved: moneySaved, rideToWork: (ride?.rideToWork)!, time: time!, date : createFormattedDate())
         
         if ((Ride.loadRides()) == nil) {
             rides.append(ride!)
@@ -117,6 +117,14 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         }
         
         Ride.saveRides(rides)
+    }
+    
+    func createFormattedDate() -> String {
+        let dateFormatter = DateFormatter()
+        let dateNu = Date.init()
+        
+        dateFormatter.dateFormat = "dd-MM"
+        return dateFormatter.string(from: dateNu)
     }
     
     //StandardFunctionDueToExtending
