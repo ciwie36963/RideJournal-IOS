@@ -10,7 +10,6 @@ import UIKit
 import Foundation
 
 class VehicleDetailsTableViewController: UITableViewController {
-    //testtt
     @IBOutlet weak var workSwitch: UISwitch!
     @IBOutlet weak var carConsumeCell: UITableViewCell!
     @IBOutlet weak var travelAllowanceCell: UITableViewCell!
@@ -35,7 +34,7 @@ class VehicleDetailsTableViewController: UITableViewController {
             travelAllowanceTextField.backgroundColor = .white
         }
     }
-    //fdfdfdfd
+    
     @IBAction func editingChangedFuelUsagePerKmYTextField(_ sender: Any) {
         
         let carConsumeTextCheck = NSRange(location: 0, length: carConsumeTextField.text!.utf16.count)
