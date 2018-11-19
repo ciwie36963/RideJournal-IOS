@@ -8,52 +8,20 @@
 
 import UIKit
 import Charts
-//SOURCE: https://stackoverflow.com/questions/24044851/how-do-you-use-string-substringwithrange-or-how-do-ranges-work-in-swift
-extension String {
-    func substring(from: Int?, to: Int?) -> String {
-        if let start = from {
-            guard start < self.characters.count else {
-                return ""
-            }
-        }
-        
-        if let end = to {
-            guard end >= 0 else {
-                return ""
-            }
-        }
-        
-        if let start = from, let end = to {
-            guard end - start >= 0 else {
-                return ""
-            }
-        }
-        
-        let startIndex: String.Index
-        if let start = from, start >= 0 {
-            startIndex = self.index(self.startIndex, offsetBy: start)
-        } else {
-            startIndex = self.startIndex
-        }
-        
-        let endIndex: String.Index
-        if let end = to, end >= 0, end < self.characters.count {
-            endIndex = self.index(self.startIndex, offsetBy: end + 1)
-        } else {
-            endIndex = self.endIndex
-        }
-        
-        return String(self[startIndex ..< endIndex])
-    }
-}
-////////////////////////////////////////////////////////////////END OF SOURCE/////////////////////////////////////////////////////////
+
 class DashBoardViewController: UIViewController {
     
+    
     @IBOutlet weak var lineChartView: LineChartView!
+    @IBOutlet weak var vehicleLabel: UILabel!
+    @IBOutlet weak var moneyLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     var rides = [Ride]()
     var distances = [Double]()
     var dates = [String]()
+    var dates2 = [Date]()
     var lineChartEntries = [ChartDataEntry]()
     var counter : Int = 0
     var sumDistance : Double! = 0.0
@@ -65,65 +33,75 @@ class DashBoardViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-         if ((Ride.loadRides()) == nil) {
-         let alert = UIAlertController(title: "No Rides", message: "There is not enough information to display", preferredStyle: .actionSheet)
-         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
-         present(alert, animated: true)
-         } else {
-         rides = Ride.loadRides()!
-         distances.removeAll()
-         for i in 0..<rides.count{
-         distances.append(rides[i].distanceRide)
-         dates.append(ScreenFormatter.date(rides[i].date))
-         }
-         setChart(dataPoints: dates, values: distances)
-         }
+        if ((Ride.loadRides()) == nil) {
+            let alert = UIAlertController(title: "No Rides", message: "There is not enough information to display", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+            present(alert, animated: true)
+        } else {
+            rides = Ride.loadRides()!
+            distances.removeAll()
+            for i in 0..<rides.count{
+                distances.append(rides[i].distanceRide)
+                dates.append(ScreenFormatter.date(rides[i].date))
+                dates2.append(rides[i].date)
+            }
+            setChart(dataPoints: dates, values: distances)
+            vehicleLabel.text = calculateVehicleMostUsed().rawValue
+            moneyLabel.text = String(calculateMoneySavedTotal())
+            //distanceLabel.text = 
+            //timeLabel.text =
+        }
     }
     
     //Own functions
     func setChart(dataPoints: [String], values: [Double]) {
-        var emptyDictionary = [String: [Double]]()
+        var emptyDictionary = [Date : [Double]]()
         var dataEntry = ChartDataEntry(x: Double(counter), y: sumDistance)
         
-        /*
-         for i in 0..<distances.count {
-         print(sumDistance)
-         sumDistance+=values[i]
-         currentDate = dataPoints.last!
-         
-         if (dataPoints[counter] == currentDate) {
-         if lineChartEntries.isEmpty{
-         lineChartEntries.append(dataEntry)
-         } else {
-         print(lineChartEntries)
-         //hij verwijdert de vorige volledige sumDistance en maakt een punt met de nieuwe
-         lineChartEntries.removeLast()
-         lineChartEntries.append(dataEntry)
-         }
-         } else {
-         counter+=1
-         dataEntry = ChartDataEntry(x: Double(counter), y: sumDistance)
-         lineChartEntries.append(dataEntry)
-         }
-         }
-         */
+        
+        for i in 0..<distances.count {
+            print(sumDistance)
+            sumDistance+=values[i]
+            currentDate = dataPoints.last!
+            
+            if (dataPoints[counter] == currentDate) {
+                if lineChartEntries.isEmpty{
+                    lineChartEntries.append(dataEntry)
+                } else {
+                    print(lineChartEntries)
+                    //hij verwijdert de vorige volledige sumDistance en maakt een punt met de nieuwe
+                    lineChartEntries.removeLast()
+                    lineChartEntries.append(dataEntry)
+                }
+            } else {
+                counter+=1
+                dataEntry = ChartDataEntry(x: Double(counter), y: sumDistance)
+                lineChartEntries.append(dataEntry)
+            }
+        }
+        
         /*
         for i in 0..<rides.count {
             var currentKey = emptyDictionary[rides[i].date]
-            guard let currentKeyUn = currentKey else {
+            guard var currentKeyUn = currentKey else {
                 var dates = [Double]()
-                dates = rides[i].distanceRide
+                dates.append(rides[i].distanceRide)
                 emptyDictionary[rides[i].date] = dates
+                return
             }
+            currentKeyUn.append(rides[i].distanceRide)
         }
         */
+        
         let lineChartDataSet = LineChartDataSet(values: lineChartEntries, label: "Distance travelled")
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
+        lineChartDataSet.circleColors = [NSUIColor.red]
         
         lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
         lineChartView.xAxis.granularity = 1
         
         lineChartView.data = lineChartData
+        print(lineChartView.data)
     }
     
     func calculateVehicleMostUsed() -> VehicleType {

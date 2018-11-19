@@ -69,6 +69,8 @@ class VehicleDetailsTableViewController: UITableViewController {
                 saveButton.isEnabled = false
                 if (carConsumeTextField.text != "" && travelAllowanceTextField.text != "") {
                     saveButton.isEnabled = true
+                } else {
+                    saveButton.isEnabled = false
                 }
             } else if (workSwitch.isOn == false){
                 saveButton.isEnabled = false
