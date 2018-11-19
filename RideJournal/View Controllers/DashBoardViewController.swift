@@ -65,7 +65,6 @@ class DashBoardViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        /*
          if ((Ride.loadRides()) == nil) {
          let alert = UIAlertController(title: "No Rides", message: "There is not enough information to display", preferredStyle: .actionSheet)
          alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
@@ -74,13 +73,11 @@ class DashBoardViewController: UIViewController {
          rides = Ride.loadRides()!
          distances.removeAll()
          for i in 0..<rides.count{
-         let distance = rides[i].distanceRide
-         distances.append(Double(distance.substring(from: 11, to: 11))!)
-         dates.append(rides[i].date!)
+         distances.append(rides[i].distanceRide)
+         dates.append(ScreenFormatter.date(rides[i].date))
          }
          setChart(dataPoints: dates, values: distances)
          }
-         */
     }
     
     //Own functions
