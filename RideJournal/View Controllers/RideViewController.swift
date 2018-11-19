@@ -19,7 +19,6 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var stopTrackingButton: UIButton!
     
-    
     var locationManager = CLLocationManager()
     var locationList: [CLLocation] = []
     var distance = Measurement(value: 0, unit: UnitLength.meters)

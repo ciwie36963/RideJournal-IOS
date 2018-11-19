@@ -1,0 +1,6 @@
+framework module Pods_RideJournal {
+  umbrella header "Pods-RideJournal-umbrella.h"
+
+  export *
+  module * { export * }
+}
