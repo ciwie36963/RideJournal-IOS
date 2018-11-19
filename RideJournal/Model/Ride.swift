@@ -13,21 +13,23 @@ enum VehicleType: String {
     case car
 }
 
-extension String {
-    func toDouble() -> Double? {
-        return NumberFormatter().number(from: self)?.doubleValue
-    }
-}
+/*
+ extension String {
+ func toDouble() -> Double? {
+ return NumberFormatter().number(from: self)?.doubleValue
+ }
+ }
+ */
 
 class Ride : NSObject, NSCoding {
-    var distanceRide : String
+    var distanceRide : Double
     var vehicle : VehicleType
     var moneySaved : Double
     var rideToWork : Bool
-    var time: String
-    var date: String?
+    var time: String //nog veranderen?
+    var date: Date
     
-    init(distanceRide: String, vehicle : VehicleType, moneySaved : Double, rideToWork : Bool, time : String, date: String?) {
+    init(distanceRide: Double, vehicle : VehicleType, moneySaved : Double, rideToWork : Bool, time : String, date: Date) {
         self.distanceRide = distanceRide
         self.vehicle = vehicle
         self.moneySaved = moneySaved
@@ -45,25 +47,28 @@ class Ride : NSObject, NSCoding {
         static let date = "date"
     }
     
-    func calculateMoneySaved(distance: String, refundTravelExpensesPerKm : Double, fuelUsagePerKm : Double) -> Double {
-        let cutDistanceRide = distance.index(of: " ")!
-        let createStringDistance = String(distance[...cutDistanceRide])
-        let correctDistance = createStringDistance.toDouble() //ging enkel met deze meth, Double(..) wou hij niet pakken
+    func calculateMoneySaved(distance: Double, refundTravelExpensesPerKm : Double, fuelUsagePerKm : Double) -> Double {
+        /*
+         let cutDistanceRide = distance.index(of: " ")!
+         let createStringDistance = String(distance[...cutDistanceRide])
+         let correctDistance = createStringDistance.toDouble() //ging enkel met deze meth, Double(..) wou hij niet pakken
+         */
+        
         var moneySavedNoCar = 1.0 //init
         
-        if (correctDistance == 0) {
+        if (distance == 0) {
             return 0
         } else {
-            moneySavedNoCar = (fuelUsagePerKm / correctDistance!) * 1.15 //met hardcoded benzinePrijs
+            moneySavedNoCar = (fuelUsagePerKm / distance) * 1.15 //met hardcoded benzinePrijs
         }
         
         if (rideToWork) {
             //naar werk met auto
             if (vehicle == VehicleType.car) {
-                return correctDistance! * refundTravelExpensesPerKm
+                return distance * refundTravelExpensesPerKm
             } else if (vehicle == VehicleType.bike){
                 //naar werk met fiets
-                return correctDistance! * refundTravelExpensesPerKm + moneySavedNoCar
+                return distance * refundTravelExpensesPerKm + moneySavedNoCar
             }
             //niet naar werk, met auto
         }  else {
@@ -75,8 +80,7 @@ class Ride : NSObject, NSCoding {
             }
             
         }
-        //doet niets
-        return 1000
+        return moneySavedNoCar
     }
     
     func enumToString(vehicle : VehicleType) -> String {
@@ -102,14 +106,14 @@ class Ride : NSObject, NSCoding {
     
     required convenience init?(coder aDecoder: NSCoder) {
         
-        let distanceRide = aDecoder.decodeObject(forKey: PropertyKey.distanceRide) as? String
+        let distanceRide = aDecoder.decodeDouble(forKey: PropertyKey.distanceRide) as Double
         let vehicle = VehicleType(rawValue: aDecoder.decodeObject(forKey: "vehicle") as! String)
         let moneySaved = aDecoder.decodeDouble(forKey: PropertyKey.moneySaved) as Double
         let rideToWork = aDecoder.decodeBool(forKey: PropertyKey.rideToWork) as Bool
-        let time = aDecoder.decodeObject(forKey: PropertyKey.time) as? String
-        let date = aDecoder.decodeObject(forKey: PropertyKey.date) as? String
+        let time = aDecoder.decodeObject(forKey: PropertyKey.time) as! String
+        let date = aDecoder.decodeObject(forKey: PropertyKey.date) as! Date
         
-        self.init(distanceRide : distanceRide!, vehicle : vehicle!, moneySaved : moneySaved, rideToWork : rideToWork, time : time!, date : date)
+        self.init(distanceRide : distanceRide, vehicle : vehicle!, moneySaved : moneySaved, rideToWork : rideToWork, time : time, date : date)
     }
     
     func encode(with aCoder: NSCoder) {

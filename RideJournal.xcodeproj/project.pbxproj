@@ -17,10 +17,12 @@
 		11762304219B05660061125A /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11762303219B05660061125A /* Car.swift */; };
 		11762308219B0C570061125A /* RideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11762307219B0C570061125A /* RideViewController.swift */; };
 		1191874F219C235300AB3C16 /* SelectVehicleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1191874E219C235300AB3C16 /* SelectVehicleTableViewController.swift */; };
-		11918751219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11918750219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift */; };
+		11918751219C3F6700AB3C16 /* VehicleDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11918750219C3F6700AB3C16 /* VehicleDetailsTableViewController.swift */; };
+		11B2D56821A05E1A00091BC0 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B2D56721A05E1900091BC0 /* DashBoardViewController.swift */; };
 		11EF1424219EE99A00EFB69B /* RidesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF1423219EE99A00EFB69B /* RidesTableViewController.swift */; };
 		11EF1426219F0A3900EFB69B /* RideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF1425219F0A3900EFB69B /* RideCell.swift */; };
 		11F4AC18219B5E9B008D1496 /* ScreenFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4AC17219B5E9B008D1496 /* ScreenFormatter.swift */; };
+		51B11C4E8763CBD0708919DB /* Pods_RideJournal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AA59463083BE0AAC39417B /* Pods_RideJournal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,10 +38,14 @@
 		11762303219B05660061125A /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		11762307219B0C570061125A /* RideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideViewController.swift; sourceTree = "<group>"; };
 		1191874E219C235300AB3C16 /* SelectVehicleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVehicleTableViewController.swift; sourceTree = "<group>"; };
-		11918750219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleDetailsTableViewController.swift; sourceTree = "<group>"; };
+		11918750219C3F6700AB3C16 /* VehicleDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailsTableViewController.swift; sourceTree = "<group>"; };
+		11B2D56721A05E1900091BC0 /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
 		11EF1423219EE99A00EFB69B /* RidesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesTableViewController.swift; sourceTree = "<group>"; };
 		11EF1425219F0A3900EFB69B /* RideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideCell.swift; sourceTree = "<group>"; };
 		11F4AC17219B5E9B008D1496 /* ScreenFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFormatter.swift; sourceTree = "<group>"; };
+		6F3A268AA3CD6A03A7FFBCB4 /* Pods-RideJournal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideJournal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RideJournal/Pods-RideJournal.debug.xcconfig"; sourceTree = "<group>"; };
+		7D123E4A03552E57A0A020C7 /* Pods-RideJournal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideJournal.release.xcconfig"; path = "Pods/Target Support Files/Pods-RideJournal/Pods-RideJournal.release.xcconfig"; sourceTree = "<group>"; };
+		E7AA59463083BE0AAC39417B /* Pods_RideJournal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideJournal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51B11C4E8763CBD0708919DB /* Pods_RideJournal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +65,8 @@
 			children = (
 				1148BD8F219AF59A0080F3FA /* RideJournal */,
 				1148BD8E219AF59A0080F3FA /* Products */,
+				F30356A2A6EC473A4EF33CC0 /* Pods */,
+				38744ED9FDAA21E79AC4B91E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,9 +97,10 @@
 			children = (
 				11762307219B0C570061125A /* RideViewController.swift */,
 				1191874E219C235300AB3C16 /* SelectVehicleTableViewController.swift */,
-				11918750219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift */,
+				11918750219C3F6700AB3C16 /* VehicleDetailsTableViewController.swift */,
 				11EF1423219EE99A00EFB69B /* RidesTableViewController.swift */,
 				116FF250219F4AEF00EC5269 /* MoreTableViewController.swift */,
+				11B2D56721A05E1900091BC0 /* DashBoardViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -107,6 +117,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		38744ED9FDAA21E79AC4B91E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7AA59463083BE0AAC39417B /* Pods_RideJournal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F30356A2A6EC473A4EF33CC0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6F3A268AA3CD6A03A7FFBCB4 /* Pods-RideJournal.debug.xcconfig */,
+				7D123E4A03552E57A0A020C7 /* Pods-RideJournal.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -114,9 +141,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1148BD9F219AF59B0080F3FA /* Build configuration list for PBXNativeTarget "RideJournal" */;
 			buildPhases = (
+				C21AA05E2CCBCF1DAD0C27ED /* [CP] Check Pods Manifest.lock */,
 				1148BD89219AF59A0080F3FA /* Sources */,
 				1148BD8A219AF59A0080F3FA /* Frameworks */,
 				1148BD8B219AF59A0080F3FA /* Resources */,
+				6AD323248BCB5E595A7034D4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -173,6 +202,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6AD323248BCB5E595A7034D4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RideJournal/Pods-RideJournal-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RideJournal/Pods-RideJournal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C21AA05E2CCBCF1DAD0C27ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RideJournal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1148BD89219AF59A0080F3FA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -181,6 +257,7 @@
 				1191874F219C235300AB3C16 /* SelectVehicleTableViewController.swift in Sources */,
 				11EF1426219F0A3900EFB69B /* RideCell.swift in Sources */,
 				11EF1424219EE99A00EFB69B /* RidesTableViewController.swift in Sources */,
+				11B2D56821A05E1A00091BC0 /* DashBoardViewController.swift in Sources */,
 				11762300219B05480061125A /* Ride.swift in Sources */,
 				11762304219B05660061125A /* Car.swift in Sources */,
 				116FF251219F4AEF00EC5269 /* MoreTableViewController.swift in Sources */,
@@ -188,7 +265,7 @@
 				11762302219B05560061125A /* Bike.swift in Sources */,
 				11F4AC18219B5E9B008D1496 /* ScreenFormatter.swift in Sources */,
 				1148BD91219AF59A0080F3FA /* AppDelegate.swift in Sources */,
-				11918751219C3F6700AB3C16 /* vehicleDetailsTableViewController.swift in Sources */,
+				11918751219C3F6700AB3C16 /* VehicleDetailsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +409,7 @@
 		};
 		1148BDA0219AF59B0080F3FA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F3A268AA3CD6A03A7FFBCB4 /* Pods-RideJournal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -351,6 +429,7 @@
 		};
 		1148BDA1219AF59B0080F3FA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D123E4A03552E57A0A020C7 /* Pods-RideJournal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

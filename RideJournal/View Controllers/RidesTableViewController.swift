@@ -41,7 +41,7 @@ class RidesTableViewController: UITableViewController {
         }
         
         let ride = rides[indexPath.row]
-        cell.distanceLabel.text = ride.distanceRide
+        cell.distanceLabel.text = ScreenFormatter.distance(ride.distanceRide)
         cell.vehicleTypeLabel.text = String(Substring(ride.vehicle.rawValue))
         cell.moneySavedLabel.text = String(ride.moneySaved)
         if (ride.rideToWork) {

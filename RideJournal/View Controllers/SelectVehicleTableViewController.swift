@@ -88,11 +88,11 @@ class SelectVehicleTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "bike" {
             print("bike segue pressed")
-            let vehicleDetailsTableViewController = segue.destination as! vehicleDetailsTableViewController
+            let vehicleDetailsTableViewController = segue.destination as! VehicleDetailsTableViewController
             bike = Bike(refundTravelExpensesPerKm: 0, fuelUsageOfCarNotUsed: 0, isBike: true)
             vehicleDetailsTableViewController.bike = bike;
         } else if segue.identifier == "car" {
-            let vehicleDetailsTableViewController = segue.destination as! vehicleDetailsTableViewController
+            let vehicleDetailsTableViewController = segue.destination as! VehicleDetailsTableViewController
             car = Car(refundTravelExpensesPerKm: 0, fuelUsagePerKm: 0, isCar: true)
             vehicleDetailsTableViewController.car = car;
         }

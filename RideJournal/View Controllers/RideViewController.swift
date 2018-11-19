@@ -97,17 +97,15 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     
     func saveTheRide() {
         var moneySaved = 0.0//init
-        let distanceRide = distanceTravelled.text!
-        //vehicle wordt al gedaan in vorig scherm
+        
         if (car?.refundTravelExpensesPerKm == nil) {
-            moneySaved = (ride?.calculateMoneySaved(distance: ScreenFormatter.distance(distance), refundTravelExpensesPerKm: (bike?.refundTravelExpensesPerKm)!, fuelUsagePerKm: (bike?.fuelUsageOfCarNotUsed)!))!
+            moneySaved = (ride?.calculateMoneySaved(distance: distance.value, refundTravelExpensesPerKm: (bike?.refundTravelExpensesPerKm)!, fuelUsagePerKm: (bike?.fuelUsageOfCarNotUsed)!))!
         } else if (bike?.refundTravelExpensesPerKm == nil) {
-            moneySaved = (ride?.calculateMoneySaved(distance: ScreenFormatter.distance(distance), refundTravelExpensesPerKm: (car?.refundTravelExpensesPerKm)!, fuelUsagePerKm: (car?.fuelUsagePerKm)!))!
+            moneySaved = (ride?.calculateMoneySaved(distance: distance.value, refundTravelExpensesPerKm: (car?.refundTravelExpensesPerKm)!, fuelUsagePerKm: (car?.fuelUsagePerKm)!))!
         }
-        //rideToWork wordt al gedaan in vorig scherm
         let time = timeTravelled.text
         //je kan enkel zo iets meegeven als je gebruikt maakt van een prepareForUnwind
-        ride = Ride(distanceRide: distanceRide, vehicle: (ride?.vehicle)!, moneySaved: moneySaved, rideToWork: (ride?.rideToWork)!, time: time!, date : createFormattedDate())
+        ride = Ride(distanceRide: distance.value, vehicle: (ride?.vehicle)!, moneySaved: moneySaved, rideToWork: (ride?.rideToWork)!, time: time!, date: (ride?.date)!)
         
         if ((Ride.loadRides()) == nil) {
             rides.append(ride!)
@@ -119,14 +117,6 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         Ride.saveRides(rides)
     }
     
-    func createFormattedDate() -> String {
-        let dateFormatter = DateFormatter()
-        let dateNu = Date.init()
-        
-        dateFormatter.dateFormat = "dd-MM"
-        return dateFormatter.string(from: dateNu)
-    }
-    
     //StandardFunctionDueToExtending
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation = locations.last
@@ -136,7 +126,7 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         
         for newLocation in locations {
             let interval = newLocation.timestamp.timeIntervalSinceNow
-            guard interval < 10 && newLocation.horizontalAccuracy < 20 else { continue }
+            guard interval < 5 && newLocation.horizontalAccuracy < 10 else { continue }
             if let lastLocation = locationList.last {
                 let difference2Locations = newLocation.distance(from: lastLocation)
                 distance = distance + Measurement(value: difference2Locations, unit: UnitLength.meters)
