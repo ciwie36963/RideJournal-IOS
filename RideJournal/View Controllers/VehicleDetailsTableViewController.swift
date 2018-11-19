@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 class VehicleDetailsTableViewController: UITableViewController {
-    //test
+    //testtt
     @IBOutlet weak var workSwitch: UISwitch!
     @IBOutlet weak var carConsumeCell: UITableViewCell!
     @IBOutlet weak var travelAllowanceCell: UITableViewCell!
