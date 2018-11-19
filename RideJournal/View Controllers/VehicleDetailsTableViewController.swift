@@ -38,7 +38,7 @@ class VehicleDetailsTableViewController: UITableViewController {
     @IBAction func editingChangedFuelUsagePerKmYTextField(_ sender: Any) {
         
         let carConsumeTextCheck = NSRange(location: 0, length: carConsumeTextField.text!.utf16.count)
-        let regex = try! NSRegularExpression(pattern: "^[1-9]\\d*(\\.\\d+)?$")
+        let regex = try! NSRegularExpression(pattern: "^[0-9]\\d*(\\.\\d+)?$")
         let regexCarConsume = regex.firstMatch(in: carConsumeTextField.text!, options: [], range: carConsumeTextCheck)
         
         if (regexCarConsume != nil) {
