@@ -7,21 +7,37 @@
 //
 
 import UIKit
+import SwiftSoup
+import Alamofire
 
 class SelectVehicleTableViewController: UITableViewController {
     
     var bike : Bike?
     var car : Car?
+    var pricesGaloline = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // self.view.backgroundColor = #20243e
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        let URL = "https://carbu.com/belgie//index.php/officieleprijs"
         
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        Alamofire.request(URL, method: .post, parameters: nil, encoding: URLEncoding.default).validate(contentType: ["application/x-www-form-urlencoded"]).response { (response) in
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                do {
+                    let html: String = utf8Text
+                    let doc: Document = try SwiftSoup.parse(html)
+                    for row in try! doc.getElementsByClass("price") {
+                        self.pricesGaloline.append(try row.text())
+                    }
+                    
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        
+        // self.view.backgroundColor = #20243e
     }
     
     // MARK: - Table view data source
@@ -36,65 +52,19 @@ class SelectVehicleTableViewController: UITableViewController {
         return 3
     }
     
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let vehicleDetailsTableViewController = segue.destination as! VehicleDetailsTableViewController
+        
         if segue.identifier == "bike" {
-            print("bike segue pressed")
-            let vehicleDetailsTableViewController = segue.destination as! VehicleDetailsTableViewController
-            bike = Bike(refundTravelExpensesPerKm: 0, fuelUsageOfCarNotUsed: 0, isBike: true)
+            bike = Bike(refundTravelExpensesPerKm: 0, fuelUsageOfCarNotUsed: 0, isBike: true, fuelPriceCar: 0)
             vehicleDetailsTableViewController.bike = bike;
         } else if segue.identifier == "car" {
-            let vehicleDetailsTableViewController = segue.destination as! VehicleDetailsTableViewController
-            car = Car(refundTravelExpensesPerKm: 0, fuelUsagePerKm: 0, isCar: true)
+            car = Car(refundTravelExpensesPerKm: 0, fuelUsagePerKm: 0, isCar: true, fuelPriceCar: 0)
             vehicleDetailsTableViewController.car = car;
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+            vehicleDetailsTableViewController.pricesGaloline = self.pricesGaloline
+        })
     }
 }

@@ -7,4 +7,6 @@ target 'RideJournal' do
 
   # Pods for RideJournal
   pod 'Charts'
+  pod 'SwiftSoup'
+  pod 'Alamofire'
 end

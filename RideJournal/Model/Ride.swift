@@ -13,14 +13,6 @@ enum VehicleType: String {
     case car
 }
 
-/*
- extension String {
- func toDouble() -> Double? {
- return NumberFormatter().number(from: self)?.doubleValue
- }
- }
- */
-
 class Ride : NSObject, NSCoding {
     var distanceRide : Double
     var vehicle : VehicleType
@@ -47,19 +39,13 @@ class Ride : NSObject, NSCoding {
         static let date = "date"
     }
     
-    func calculateMoneySaved(distance: Double, refundTravelExpensesPerKm : Double, fuelUsagePerKm : Double) -> Double {
-        /*
-         let cutDistanceRide = distance.index(of: " ")!
-         let createStringDistance = String(distance[...cutDistanceRide])
-         let correctDistance = createStringDistance.toDouble() //ging enkel met deze meth, Double(..) wou hij niet pakken
-         */
-        
-        var moneySavedNoCar = 1.0 //init
+    func calculateMoneySaved(distance: Double, refundTravelExpensesPerKm : Double, fuelUsagePerKm : Double, fuelPriceSpecificCar : Double) -> Double {
+        var moneySavedNoCar = 1.0 //init //naamgeving: hij houdt enkel rekening met naft bij gebruik fiets
         
         if (distance == 0) {
             return 0
         } else {
-            moneySavedNoCar = (fuelUsagePerKm / distance) * 1.15 //met hardcoded benzinePrijs
+            moneySavedNoCar = (fuelUsagePerKm / distance) * fuelPriceSpecificCar
         }
         
         if (rideToWork) {
@@ -124,6 +110,4 @@ class Ride : NSObject, NSCoding {
         aCoder.encode(time, forKey: PropertyKey.time)
         aCoder.encode(date, forKey: PropertyKey.date)
     }
-    
-    
 }

@@ -539,6 +539,43 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Gasoline" id="1aS-OK-of0">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="90" id="4l1-4g-Ufe">
+                                        <rect key="frame" x="0.0" y="355.5" width="375" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4l1-4g-Ufe" id="fd2-KH-dnw">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pvv-Cj-Y00">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="editingChangedTravelAllowanceTextField:" destination="cE2-tO-aW5" eventType="editingChanged" id="r25-IF-gze"/>
+                                                    </connections>
+                                                </textField>
+                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gXk-Vr-OUs">
+                                                    <rect key="frame" x="0.0" y="-5" width="375" height="95"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="cE2-tO-aW5" id="bUb-0Z-vUW"/>
+                                                        <outlet property="delegate" destination="cE2-tO-aW5" id="Hdn-69-qf5"/>
+                                                    </connections>
+                                                </pickerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Pvv-Cj-Y00" firstAttribute="top" secondItem="fd2-KH-dnw" secondAttribute="top" id="Rgj-07-NO4"/>
+                                                <constraint firstItem="Pvv-Cj-Y00" firstAttribute="leading" secondItem="fd2-KH-dnw" secondAttribute="leading" id="bSg-oB-zFM"/>
+                                                <constraint firstAttribute="trailing" secondItem="Pvv-Cj-Y00" secondAttribute="trailing" id="cnV-cv-m7G"/>
+                                                <constraint firstAttribute="bottom" secondItem="Pvv-Cj-Y00" secondAttribute="bottom" id="nP5-X7-ziz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Details" id="Tb8-cg-4tm">
@@ -551,6 +588,7 @@
                     <connections>
                         <outlet property="carConsumeCell" destination="05s-ld-Ulp" id="9bj-2y-cQm"/>
                         <outlet property="carConsumeTextField" destination="MtR-88-DYh" id="hvP-Zl-DAK"/>
+                        <outlet property="pickerView" destination="gXk-Vr-OUs" id="hfU-aA-yxP"/>
                         <outlet property="saveButton" destination="smX-7D-nfO" id="vL6-cJ-d53"/>
                         <outlet property="travelAllowanceCell" destination="FgU-Mo-MV4" id="d8s-1U-1oq"/>
                         <outlet property="travelAllowanceTextField" destination="Wws-Rw-yC3" id="0dR-Uj-UPX"/>
@@ -559,7 +597,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfq-mj-f7W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2687" y="521"/>
+            <point key="canvasLocation" x="2685.5999999999999" y="520.38980509745136"/>
         </scene>
         <!--Ride-->
         <scene sceneID="W3O-QD-Cnv">
@@ -718,7 +756,7 @@
                                         <rect key="frame" x="0.0" y="375" width="343" height="116"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZvO-og-DoM">
-                                                <rect key="frame" x="0.0" y="0.0" width="186" height="116"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="222.5" height="116"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Mostly used vehicle:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-ip-DMK">
                                                         <rect key="frame" x="0.0" y="0.0" width="156" height="18.5"/>
@@ -747,28 +785,28 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="f6s-Zz-dEV">
-                                                <rect key="frame" x="301" y="0.0" width="42" height="116"/>
+                                                <rect key="frame" x="337.5" y="0.0" width="5.5" height="116"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhH-G4-OPi">
-                                                        <rect key="frame" x="0.0" y="0.0" width="42" height="18.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhH-G4-OPi">
+                                                        <rect key="frame" x="0.0" y="0.0" width="5.5" height="18.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFN-tJ-CQW">
-                                                        <rect key="frame" x="0.0" y="30.5" width="42" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFN-tJ-CQW">
+                                                        <rect key="frame" x="0.0" y="30.5" width="5.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BgY-zX-rss">
-                                                        <rect key="frame" x="0.0" y="63" width="42" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BgY-zX-rss">
+                                                        <rect key="frame" x="0.0" y="63" width="5.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6f-Te-ObV">
-                                                        <rect key="frame" x="0.0" y="95.5" width="42" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6f-Te-ObV">
+                                                        <rect key="frame" x="0.0" y="95.5" width="5.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

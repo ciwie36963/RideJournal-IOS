@@ -18,6 +18,7 @@ class DashBoardViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    
     var rides = [Ride]()
     var distances = [Double]()
     var dates = [String]()
@@ -33,7 +34,7 @@ class DashBoardViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if ((Ride.loadRides()) == nil) {
+        if ((Ride.loadRides()) == nil || Ride.loadRides()?.isEmpty == true) {
             let alert = UIAlertController(title: "No Rides", message: "There is not enough information to display", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
             present(alert, animated: true)
@@ -48,14 +49,14 @@ class DashBoardViewController: UIViewController {
             setChart(dataPoints: dates, values: distances)
             vehicleLabel.text = calculateVehicleMostUsed().rawValue
             moneyLabel.text = String(calculateMoneySavedTotal())
-            //distanceLabel.text = 
+            //distanceLabel.text =
             //timeLabel.text =
         }
     }
     
     //Own functions
     func setChart(dataPoints: [String], values: [Double]) {
-        var emptyDictionary = [Date : [Double]]()
+        var emptyDictionary = [Date : Double]()
         var dataEntry = ChartDataEntry(x: Double(counter), y: sumDistance)
         
         
@@ -80,18 +81,22 @@ class DashBoardViewController: UIViewController {
             }
         }
         
-        /*
+        
         for i in 0..<rides.count {
             var currentKey = emptyDictionary[rides[i].date]
             guard var currentKeyUn = currentKey else {
-                var dates = [Double]()
-                dates.append(rides[i].distanceRide)
-                emptyDictionary[rides[i].date] = dates
+                //var dates = [Double]()
+                //dates.append(rides[i].distanceRide)
+                emptyDictionary[rides[i].date] = rides[i].distanceRide
                 return
             }
-            currentKeyUn.append(rides[i].distanceRide)
+            currentKeyUn += rides[i].distanceRide
+            emptyDictionary[rides[i].date] = currentKeyUn
         }
-        */
+        
+        
+        
+        
         
         let lineChartDataSet = LineChartDataSet(values: lineChartEntries, label: "Distance travelled")
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
@@ -105,7 +110,7 @@ class DashBoardViewController: UIViewController {
     }
     
     func calculateVehicleMostUsed() -> VehicleType {
-        var vehicleMostUsed : VehicleType?
+        var vehicleMostUsed : VehicleType!
         var bikeCounter : Int = 0
         var carCounter : Int = 0
         for i in 0..<rides.count {
@@ -120,7 +125,7 @@ class DashBoardViewController: UIViewController {
         } else if (carCounter > bikeCounter) {
             vehicleMostUsed = VehicleType.car
         }
-        return vehicleMostUsed!
+        return vehicleMostUsed
     }
     
     func calculateMoneySavedTotal() -> Double {
@@ -130,16 +135,4 @@ class DashBoardViewController: UIViewController {
         }
         return moneySaved
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

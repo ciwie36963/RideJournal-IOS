@@ -98,11 +98,14 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         var moneySaved = 0.0//init
         
         if (car?.refundTravelExpensesPerKm == nil) {
-            moneySaved = (ride?.calculateMoneySaved(distance: distance.value, refundTravelExpensesPerKm: (bike?.refundTravelExpensesPerKm)!, fuelUsagePerKm: (bike?.fuelUsageOfCarNotUsed)!))!
+            //als die travelExpenses bij auto niet bestaan is het een fiets
+            moneySaved = (ride?.calculateMoneySaved(distance: distance.value, refundTravelExpensesPerKm: (bike?.refundTravelExpensesPerKm)!, fuelUsagePerKm: (bike?.fuelUsageOfCarNotUsed)!, fuelPriceSpecificCar: (bike?.fuelPriceCar)!))!
         } else if (bike?.refundTravelExpensesPerKm == nil) {
-            moneySaved = (ride?.calculateMoneySaved(distance: distance.value, refundTravelExpensesPerKm: (car?.refundTravelExpensesPerKm)!, fuelUsagePerKm: (car?.fuelUsagePerKm)!))!
+            //als die travelExpenses bij fiets niet bestaan is het een auto
+            moneySaved = (ride?.calculateMoneySaved(distance: distance.value, refundTravelExpensesPerKm: (car?.refundTravelExpensesPerKm)!, fuelUsagePerKm: (car?.fuelUsagePerKm)!, fuelPriceSpecificCar: (car?.fuelPriceCar)!))!
         }
         let time = timeTravelled.text
+        
         //je kan enkel zo iets meegeven als je gebruikt maakt van een prepareForUnwind
         ride = Ride(distanceRide: distance.value, vehicle: (ride?.vehicle)!, moneySaved: moneySaved, rideToWork: (ride?.rideToWork)!, time: time!, date: (ride?.date)!)
         
@@ -145,7 +148,4 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         drawImage.lineWidth = 5
         return drawImage
     }
-    
-    
-    // MARK: - Navigation
 }

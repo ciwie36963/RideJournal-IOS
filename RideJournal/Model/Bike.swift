@@ -12,10 +12,12 @@ struct Bike {
     var refundTravelExpensesPerKm : Double
     let fuelUsageOfCarNotUsed : Double
     let isBike : Bool
+    let fuelPriceCar : Double
     
-    init(refundTravelExpensesPerKm: Double, fuelUsageOfCarNotUsed : Double , isBike : Bool) {
+    init(refundTravelExpensesPerKm: Double, fuelUsageOfCarNotUsed : Double , isBike : Bool, fuelPriceCar : Double) {
         self.refundTravelExpensesPerKm = refundTravelExpensesPerKm
         self.fuelUsageOfCarNotUsed = fuelUsageOfCarNotUsed
         self.isBike = isBike
+        self.fuelPriceCar = fuelPriceCar
     }
 }

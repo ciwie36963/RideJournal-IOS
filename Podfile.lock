@@ -1,18 +1,26 @@
 PODS:
+  - Alamofire (4.7.3)
   - Charts (3.2.1):
     - Charts/Core (= 3.2.1)
   - Charts/Core (3.2.1)
+  - SwiftSoup (1.7.4)
 
 DEPENDENCIES:
+  - Alamofire
   - Charts
+  - SwiftSoup
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - Charts
+    - SwiftSoup
 
 SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
+  SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
 
-PODFILE CHECKSUM: 60b298b1a3b16d1888b89fafc523964b016bd0e3
+PODFILE CHECKSUM: 0605435fdb2b79940ee58f5b1d418ab580b7aa19
 
 COCOAPODS: 1.5.3

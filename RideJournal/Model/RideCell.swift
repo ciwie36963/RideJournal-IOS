@@ -17,6 +17,4 @@ class RideCell: UITableViewCell {
     @IBOutlet weak var rideToWorkLabel: UILabel!
     @IBOutlet weak var moneySavedLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    
-    
 }
