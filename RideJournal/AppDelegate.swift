@@ -19,6 +19,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UINavigationBar.appearance().barTintColor = UIColor(red: 32.0/255.0, green: 36.0/255.0, blue: 62.0/255.0, alpha: 1.0)
         //UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         //UINavigationBar.appearance().tintColor = UIColor.white
+        
+        do {
+            Network.reachability = try Reachability(hostname: "https://carbu.com/belgie//index.php/officieleprijs") //URL voor brandstofprijzen
+            do {
+                try Network.reachability?.start()
+            } catch let error as Network.Error {
+                print(error)
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
+        }
+        
         return true
     }
 

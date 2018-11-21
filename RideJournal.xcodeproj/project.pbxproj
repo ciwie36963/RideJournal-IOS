@@ -19,6 +19,7 @@
 		1191874F219C235300AB3C16 /* SelectVehicleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1191874E219C235300AB3C16 /* SelectVehicleTableViewController.swift */; };
 		11918751219C3F6700AB3C16 /* VehicleDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11918750219C3F6700AB3C16 /* VehicleDetailsTableViewController.swift */; };
 		11B2D56821A05E1A00091BC0 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B2D56721A05E1900091BC0 /* DashBoardViewController.swift */; };
+		11CBB48621A5913200BB386D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CBB48521A5913200BB386D /* Reachability.swift */; };
 		11EF1424219EE99A00EFB69B /* RidesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF1423219EE99A00EFB69B /* RidesTableViewController.swift */; };
 		11EF1426219F0A3900EFB69B /* RideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF1425219F0A3900EFB69B /* RideCell.swift */; };
 		11F4AC18219B5E9B008D1496 /* ScreenFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4AC17219B5E9B008D1496 /* ScreenFormatter.swift */; };
@@ -40,6 +41,7 @@
 		1191874E219C235300AB3C16 /* SelectVehicleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVehicleTableViewController.swift; sourceTree = "<group>"; };
 		11918750219C3F6700AB3C16 /* VehicleDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailsTableViewController.swift; sourceTree = "<group>"; };
 		11B2D56721A05E1900091BC0 /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
+		11CBB48521A5913200BB386D /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		11EF1423219EE99A00EFB69B /* RidesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesTableViewController.swift; sourceTree = "<group>"; };
 		11EF1425219F0A3900EFB69B /* RideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideCell.swift; sourceTree = "<group>"; };
 		11F4AC17219B5E9B008D1496 /* ScreenFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFormatter.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				11762303219B05660061125A /* Car.swift */,
 				11F4AC17219B5E9B008D1496 /* ScreenFormatter.swift */,
 				11EF1425219F0A3900EFB69B /* RideCell.swift */,
+				11CBB48521A5913200BB386D /* Reachability.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				11F4AC18219B5E9B008D1496 /* ScreenFormatter.swift in Sources */,
 				1148BD91219AF59A0080F3FA /* AppDelegate.swift in Sources */,
 				11918751219C3F6700AB3C16 /* VehicleDetailsTableViewController.swift in Sources */,
+				11CBB48621A5913200BB386D /* Reachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

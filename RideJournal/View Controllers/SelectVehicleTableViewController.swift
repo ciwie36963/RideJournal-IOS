@@ -17,6 +17,21 @@ class SelectVehicleTableViewController: UITableViewController {
     var pricesGaloline = [String]()
     
     override func viewDidLoad() {
+        
+        guard let status = Network.reachability?.status else { return }
+        switch status {
+        case .unreachable:
+            let alert = UIAlertController(title: "Internet Connection", message: "There is no valid internet connection", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Quit application", style: .destructive) { _ in
+                exit(0)
+            })
+            present(alert, animated: true)
+        case .wifi:
+            print("wifi ok")
+        case .wwan:
+            print("wwan ok")
+        }
+        
         super.viewDidLoad()
         
         let URL = "https://carbu.com/belgie//index.php/officieleprijs"
