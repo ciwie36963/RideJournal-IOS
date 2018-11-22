@@ -57,6 +57,7 @@ class DashBoardViewController: UIViewController {
     //Own functions
     func setChart(dataPoints: [String], values: [Double]) {
         var emptyDictionary = [Date : Double]()
+        emptyDictionary.removeAll()
         var dataEntry = ChartDataEntry()
         
         
