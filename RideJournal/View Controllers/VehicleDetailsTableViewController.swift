@@ -69,9 +69,20 @@ class VehicleDetailsTableViewController: UITableViewController, UIPickerViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //op andere thread want ophalen duurt een secondje
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-            self.fixGasolinePrices()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //op andere thread want ophalen duurt een secondje + alert indien site ECHT traag is
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+            if self.pricesGaloline.isEmpty == true {
+                let alert = UIAlertController(title: "Problem retrieving gasoline prices", message: "", preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "Back to home screen and wait a couple of seconds", style: .destructive) { _ in
+                    _ = self.navigationController?.popToRootViewController(animated: true)
+                })
+                self.present(alert, animated: true)
+            } else {
+                self.fixGasolinePrices()
+            }
         })
     }
     
@@ -89,6 +100,8 @@ class VehicleDetailsTableViewController: UITableViewController, UIPickerViewData
         super95 = super95.substring(from: 0, to: 5)
         super98 = super98.substring(from: 0, to: 5)
         diesel = diesel.substring(from: 0, to: 5)
+        
+        print(super95)
         
         self.super95 = Double(super95.replacingOccurrences(of: ",", with: "."))!
         self.super98 = Double(super98.replacingOccurrences(of: ",", with: "."))!

@@ -17,6 +17,7 @@ class SelectVehicleTableViewController: UITableViewController {
     var pricesGaloline = [String]()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
         guard let status = Network.reachability?.status else { return }
         switch status {
@@ -32,7 +33,6 @@ class SelectVehicleTableViewController: UITableViewController {
             print("wwan ok")
         }
         
-        super.viewDidLoad()
         
         let URL = "https://carbu.com/belgie//index.php/officieleprijs"
         
@@ -78,8 +78,11 @@ class SelectVehicleTableViewController: UITableViewController {
             car = Car(refundTravelExpensesPerKm: 0, fuelUsagePerKm: 0, isCar: true, fuelPriceCar: 0)
             vehicleDetailsTableViewController.car = car;
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+            //een thread in thread voor eventuele echt trage ophaling van de brandstoffen
+            
             vehicleDetailsTableViewController.pricesGaloline = self.pricesGaloline
-        })
+        }
+        )
     }
 }
