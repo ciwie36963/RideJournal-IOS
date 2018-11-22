@@ -11,6 +11,7 @@ import Foundation
 enum VehicleType: String {
     case bike
     case car
+    case both
 }
 
 class Ride : NSObject, NSCoding {
@@ -45,16 +46,16 @@ class Ride : NSObject, NSCoding {
         if (distance == 0) {
             return 0
         } else {
-            moneySavedNoCar = (fuelUsagePerKm / distance) * fuelPriceSpecificCar
+            moneySavedNoCar = (fuelUsagePerKm / (distance/1000)) * fuelPriceSpecificCar //u distance is in meter, daarom /1000
         }
         
         if (rideToWork) {
             //naar werk met auto
             if (vehicle == VehicleType.car) {
-                return distance * refundTravelExpensesPerKm
+                return (distance/1000) * refundTravelExpensesPerKm
             } else if (vehicle == VehicleType.bike){
                 //naar werk met fiets
-                return distance * refundTravelExpensesPerKm + moneySavedNoCar
+                return (distance/1000) * refundTravelExpensesPerKm + moneySavedNoCar
             }
             //niet naar werk, met auto
         }  else {

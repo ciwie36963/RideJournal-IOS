@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UINavigationBar.appearance().tintColor = UIColor.white
         
         do {
-            Network.reachability = try Reachability(hostname: "https://carbu.com/belgie//index.php/officieleprijs") //URL voor brandstofprijzen
+            Network.reachability = try Reachability(hostname: "www.google.com") //testen of je internet hebt door te kijken ofj e op google kan
             do {
                 try Network.reachability?.start()
             } catch let error as Network.Error {

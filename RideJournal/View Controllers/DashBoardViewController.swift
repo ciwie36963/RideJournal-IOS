@@ -49,7 +49,7 @@ class DashBoardViewController: UIViewController {
             setChart(dataPoints: dates, values: distances)
             vehicleLabel.text = calculateVehicleMostUsed().rawValue
             moneyLabel.text = String(calculateMoneySavedTotal())
-            //distanceLabel.text =
+            distanceLabel.text = String(calculateTotalDistance())
             //timeLabel.text =
         }
     }
@@ -57,46 +57,32 @@ class DashBoardViewController: UIViewController {
     //Own functions
     func setChart(dataPoints: [String], values: [Double]) {
         var emptyDictionary = [Date : Double]()
-        var dataEntry = ChartDataEntry(x: Double(counter), y: sumDistance)
-        
-        
-        for i in 0..<distances.count {
-            print(sumDistance)
-            sumDistance+=values[i]
-            currentDate = dataPoints.last!
-            
-            if (dataPoints[counter] == currentDate) {
-                if lineChartEntries.isEmpty{
-                    lineChartEntries.append(dataEntry)
-                } else {
-                    print(lineChartEntries)
-                    //hij verwijdert de vorige volledige sumDistance en maakt een punt met de nieuwe
-                    lineChartEntries.removeLast()
-                    lineChartEntries.append(dataEntry)
-                }
-            } else {
-                counter+=1
-                dataEntry = ChartDataEntry(x: Double(counter), y: sumDistance)
-                lineChartEntries.append(dataEntry)
-            }
-        }
+        var dataEntry = ChartDataEntry()
         
         
         for i in 0..<rides.count {
-            var currentKey = emptyDictionary[rides[i].date]
-            guard var currentKeyUn = currentKey else {
-                //var dates = [Double]()
-                //dates.append(rides[i].distanceRide)
-                emptyDictionary[rides[i].date] = rides[i].distanceRide
-                return
+            let currentKey = emptyDictionary[rides[i].date]
+         //   print(currentKey)
+            if var currentKeyUn = currentKey {
+                
+                currentKeyUn += (rides[i].distanceRide / 1000)
+                emptyDictionary[rides[i].date] = currentKeyUn
+            } else {
+             //   print(rides[i].date)
+                emptyDictionary[rides[i].date] = (rides[i].distanceRide / 1000)
+          //      print(emptyDictionary)
             }
-            currentKeyUn += rides[i].distanceRide
-            emptyDictionary[rides[i].date] = currentKeyUn
+            
         }
         
-        
-        
-        
+        var co = 0
+    //    print(emptyDictionary)
+        for (_, value) in emptyDictionary {
+            co+=1
+            dataEntry = ChartDataEntry(x: Double(co), y: value)
+            lineChartEntries.append(dataEntry)
+            
+        }
         
         let lineChartDataSet = LineChartDataSet(values: lineChartEntries, label: "Distance travelled")
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
@@ -106,7 +92,7 @@ class DashBoardViewController: UIViewController {
         lineChartView.xAxis.granularity = 1
         
         lineChartView.data = lineChartData
-        print(lineChartView.data)
+        print(lineChartView.data!)
     }
     
     func calculateVehicleMostUsed() -> VehicleType {
@@ -124,6 +110,8 @@ class DashBoardViewController: UIViewController {
             vehicleMostUsed = VehicleType.bike
         } else if (carCounter > bikeCounter) {
             vehicleMostUsed = VehicleType.car
+        } else {
+            vehicleMostUsed = VehicleType.both
         }
         return vehicleMostUsed
     }
@@ -134,5 +122,13 @@ class DashBoardViewController: UIViewController {
             moneySaved+=rides[i].moneySaved
         }
         return moneySaved
+    }
+    
+    func calculateTotalDistance() -> Double {
+        sumDistance = 0
+        for i in 0..<rides.count {
+            sumDistance += (rides[i].distanceRide/1000)
+        }
+        return sumDistance
     }
 }
