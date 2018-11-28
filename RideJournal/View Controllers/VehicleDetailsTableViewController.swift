@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 
 //SOURCE: https://stackoverflow.com/questions/24044851/how-do-you-use-string-substringwithrange-or-how-do-ranges-work-in-swift
+//deze methode werd gebruikt omdat dit de makkelijkste manier was om VAN een bepaalde plek TOT een bepaalde plek een substring te verkrijgen
 extension String {
     func substring(from: Int?, to: Int?) -> String {
         if let start = from {
@@ -47,8 +48,19 @@ extension String {
         return String(self[startIndex ..< endIndex])
     }
 }
-////////////////////////////////////////////////////////////////END OF SOURCE///////////////////////////////////////
-class VehicleDetailsTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate{
+////////////////////////////////////////////////////////////////END OF SOURCE/////////////////////////////////////////////////////////////
+extension UIViewController {
+    func hideKeyboard() {
+        let push:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(push)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+class VehicleDetailsTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet weak var workSwitch: UISwitch!
     @IBOutlet weak var carConsumeCell: UITableViewCell!
     @IBOutlet weak var travelAllowanceCell: UITableViewCell!
@@ -69,6 +81,7 @@ class VehicleDetailsTableViewController: UITableViewController, UIPickerViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboard()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -222,10 +235,10 @@ class VehicleDetailsTableViewController: UITableViewController, UIPickerViewData
                 car = Car(refundTravelExpensesPerKm: refundTravelExpensesPerKm, fuelUsagePerKm: fuelUsagePerKm!, isCar: true, fuelPriceCar: fuelForSpecificCar)
                 destination.car = car
                 if (workSwitch.isOn == true) {
-                    ride = Ride(distanceRide: 0, vehicle: VehicleType.car, moneySaved: 0, rideToWork: true, time: "", date: Date.init())
+                    ride = Ride(distanceRide: 0, vehicle: VehicleType.car, moneySaved: 0, rideToWork: true, time: 0, date: Date.init())
                     destination.ride = ride
                 } else {
-                    ride = Ride(distanceRide: 0, vehicle: VehicleType.car, moneySaved: 0, rideToWork: false, time: "", date : Date.init())
+                    ride = Ride(distanceRide: 0, vehicle: VehicleType.car, moneySaved: 0, rideToWork: false, time: 0, date : Date.init())
                     destination.ride = ride
                 }
                 
@@ -238,10 +251,10 @@ class VehicleDetailsTableViewController: UITableViewController, UIPickerViewData
                 bike = Bike(refundTravelExpensesPerKm: refundTravelExpensesPerKm, fuelUsageOfCarNotUsed: fuelUsageOfCarNotUsed!, isBike: true, fuelPriceCar : fuelForSpecificCar)
                 destination.bike = bike
                 if (workSwitch.isOn == true) {
-                    ride = Ride(distanceRide: 0, vehicle: VehicleType.bike, moneySaved: 0, rideToWork: true, time: "", date : Date.init())
+                    ride = Ride(distanceRide: 0, vehicle: VehicleType.bike, moneySaved: 0, rideToWork: true, time: 0, date : Date.init())
                     destination.ride = ride
                 } else {
-                    ride = Ride(distanceRide: 0, vehicle: VehicleType.bike, moneySaved: 0, rideToWork: false, time: "", date : Date.init())
+                    ride = Ride(distanceRide: 0, vehicle: VehicleType.bike, moneySaved: 0, rideToWork: false, time: 0, date : Date.init())
                     destination.ride = ride
                 }
             }

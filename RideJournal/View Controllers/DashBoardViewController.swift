@@ -17,16 +17,18 @@ class DashBoardViewController: UIViewController {
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     
     var rides = [Ride]()
     var distances = [Double]()
     var dates = [String]()
-    var dates2 = [Date]()
     var lineChartEntries = [ChartDataEntry]()
     var counter : Int = 0
-    var sumDistance : Double! = 0.0
     var currentDate : String!
+    var sumDistance : Double = 0.0
+    var totaltimeTravalled: Int = 0
+    var moneySaved : Double = 0.0
     
     
     override func viewDidLoad() {
@@ -44,17 +46,16 @@ class DashBoardViewController: UIViewController {
             for i in 0..<rides.count{
                 distances.append(rides[i].distanceRide)
                 dates.append(ScreenFormatter.date(rides[i].date))
-                dates2.append(rides[i].date)
             }
+            //UI
             setChart(dataPoints: dates, values: distances)
             vehicleLabel.text = calculateVehicleMostUsed().rawValue
-            moneyLabel.text = String(calculateMoneySavedTotal())
-            distanceLabel.text = String(calculateTotalDistance())
-            //timeLabel.text =
+            moneyLabel.text = String(round(1000*calculateMoneySavedTotal())/1000)
+            distanceLabel.text = ScreenFormatter.distance(calculateTotalDistance())
+            timeLabel.text = ScreenFormatter.time(calculateTotalTimeTravelled())
         }
     }
     
-    //Own functions
     func setChart(dataPoints: [String], values: [Double]) {
         var emptyDictionary : [String : Double] = [:]
         emptyDictionary.removeAll()
@@ -75,8 +76,6 @@ class DashBoardViewController: UIViewController {
             }
             
         }
-        
-       
         var co = 0
         for (key, value) in emptyDictionary {
             co+=1
@@ -119,7 +118,7 @@ class DashBoardViewController: UIViewController {
     }
     
     func calculateMoneySavedTotal() -> Double {
-        var moneySaved : Double = 0
+        moneySaved = 0.0
         for i in 0..<rides.count {
             moneySaved+=rides[i].moneySaved
         }
@@ -127,10 +126,18 @@ class DashBoardViewController: UIViewController {
     }
     
     func calculateTotalDistance() -> Double {
-        sumDistance = 0
+        sumDistance = 0.0
         for i in 0..<rides.count {
             sumDistance += (rides[i].distanceRide/1000)
         }
         return sumDistance
+    }
+    
+    func calculateTotalTimeTravelled() -> Int {
+        totaltimeTravalled = 0
+        for i in 0..<rides.count {
+            totaltimeTravalled+=rides[i].time
+        }
+        return totaltimeTravalled
     }
 }

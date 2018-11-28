@@ -43,13 +43,13 @@ class RidesTableViewController: UITableViewController {
         let ride = rides[indexPath.row]
         cell.distanceLabel.text = ScreenFormatter.distance(ride.distanceRide)
         cell.vehicleTypeLabel.text = String(Substring(ride.vehicle.rawValue))
-        cell.moneySavedLabel.text = String(ride.moneySaved)
+        cell.moneySavedLabel.text = String(round(1000*ride.moneySaved)/1000) //afronden op 3 cijfers na de komma
         if (ride.rideToWork) {
             cell.rideToWorkLabel.text = "Yes"
         } else {
             cell.rideToWorkLabel.text = "No"
         }
-        cell.timeLabel.text = ride.time
+        cell.timeLabel.text = ScreenFormatter.time(ride.time)
         return cell
     }
     

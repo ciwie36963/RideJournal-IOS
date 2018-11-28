@@ -19,10 +19,10 @@ class Ride : NSObject, NSCoding {
     var vehicle : VehicleType
     var moneySaved : Double
     var rideToWork : Bool
-    var time: String //nog veranderen?
+    var time: Int
     var date: Date
     
-    init(distanceRide: Double, vehicle : VehicleType, moneySaved : Double, rideToWork : Bool, time : String, date: Date) {
+    init(distanceRide: Double, vehicle : VehicleType, moneySaved : Double, rideToWork : Bool, time : Int, date: Date) {
         self.distanceRide = distanceRide
         self.vehicle = vehicle
         self.moneySaved = moneySaved
@@ -97,7 +97,7 @@ class Ride : NSObject, NSCoding {
         let vehicle = VehicleType(rawValue: aDecoder.decodeObject(forKey: "vehicle") as! String)
         let moneySaved = aDecoder.decodeDouble(forKey: PropertyKey.moneySaved) as Double
         let rideToWork = aDecoder.decodeBool(forKey: PropertyKey.rideToWork) as Bool
-        let time = aDecoder.decodeObject(forKey: PropertyKey.time) as! String
+        let time = aDecoder.decodeInteger(forKey: PropertyKey.time) as Int
         let date = aDecoder.decodeObject(forKey: PropertyKey.date) as! Date
         
         self.init(distanceRide : distanceRide, vehicle : vehicle!, moneySaved : moneySaved, rideToWork : rideToWork, time : time, date : date)

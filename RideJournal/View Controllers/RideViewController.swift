@@ -104,10 +104,9 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             //als die travelExpenses bij fiets niet bestaan is het een auto
             moneySaved = (ride?.calculateMoneySaved(distance: distance.value, refundTravelExpensesPerKm: (car?.refundTravelExpensesPerKm)!, fuelUsagePerKm: (car?.fuelUsagePerKm)!, fuelPriceSpecificCar: (car?.fuelPriceCar)!))!
         }
-        let time = timeTravelled.text
         
         //je kan enkel zo iets meegeven als je gebruikt maakt van een prepareForUnwind
-        ride = Ride(distanceRide: distance.value, vehicle: (ride?.vehicle)!, moneySaved: moneySaved, rideToWork: (ride?.rideToWork)!, time: time!, date: (ride?.date)!)
+        ride = Ride(distanceRide: distance.value, vehicle: (ride?.vehicle)!, moneySaved: moneySaved, rideToWork: (ride?.rideToWork)!, time: seconds, date: (ride?.date)!)
         
         if ((Ride.loadRides()) == nil) {
             rides.append(ride!)
@@ -119,7 +118,6 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         Ride.saveRides(rides)
     }
     
-    //StandardFunctionDueToExtending
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation = locations.last
         let viewRegion = MKCoordinateRegion(center: (userLocation?.coordinate)!, latitudinalMeters: 600, longitudinalMeters: 600)

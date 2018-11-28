@@ -18,7 +18,7 @@ class SelectVehicleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         guard let status = Network.reachability?.status else { return }
         switch status {
         case .unreachable:
@@ -51,8 +51,6 @@ class SelectVehicleTableViewController: UITableViewController {
                 }
             }
         }
-        
-        // self.view.backgroundColor = #20243e
     }
     
     // MARK: - Table view data source
@@ -79,8 +77,6 @@ class SelectVehicleTableViewController: UITableViewController {
             vehicleDetailsTableViewController.car = car;
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-            //een thread in thread voor eventuele echt trage ophaling van de brandstoffen
-            
             vehicleDetailsTableViewController.pricesGaloline = self.pricesGaloline
         }
         )
