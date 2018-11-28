@@ -30,7 +30,6 @@ struct ScreenFormatter {
     
     static func date(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
-        let date = Date.init()
         dateFormatter.dateFormat = "dd-MM"
         return dateFormatter.string(from: date)
     }

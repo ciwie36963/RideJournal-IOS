@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RideJournal/View Controllers/DashBoardViewController.swift"
-            timestampString = "564608804.669634"
+            timestampString = "565108918.845273"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RideJournal/Model/Ride.swift"
-            timestampString = "564608636.327076"
+            timestampString = "565108318.791744"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RideJournal/View Controllers/DashBoardViewController.swift"
-            timestampString = "564608804.670216"
+            timestampString = "565108918.845436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RideJournal/View Controllers/DashBoardViewController.swift"
-            timestampString = "564608804.670573"
+            timestampString = "565108918.845484"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RideJournal/View Controllers/DashBoardViewController.swift"
-            timestampString = "564608804.670902"
+            timestampString = "565108918.845524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "setChart(dataPoints:values:)"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "calculateVehicleMostUsed()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RideJournal/View Controllers/DashBoardViewController.swift"
-            timestampString = "564608804.671194"
+            timestampString = "565108918.8455859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "setChart(dataPoints:values:)"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "calculateVehicleMostUsed()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RideJournal/View Controllers/DashBoardViewController.swift"
-            timestampString = "564608804.671465"
+            timestampString = "565108918.845627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RideJournal/View Controllers/DashBoardViewController.swift"
-            timestampString = "564608804.671715"
+            timestampString = "565108918.845665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -209,6 +209,22 @@
             endingLineNumber = "99"
             landmarkName = "saveTheRide()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RideJournal/View Controllers/DashBoardViewController.swift"
+            timestampString = "565108918.845726"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "DashBoardViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

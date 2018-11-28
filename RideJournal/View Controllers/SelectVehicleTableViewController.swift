@@ -18,7 +18,7 @@ class SelectVehicleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
+        
         guard let status = Network.reachability?.status else { return }
         switch status {
         case .unreachable:
@@ -32,7 +32,7 @@ class SelectVehicleTableViewController: UITableViewController {
         case .wwan:
             print("wwan ok")
         }
-        */
+        
         
         let URL = "https://carbu.com/belgie//index.php/officieleprijs"
         

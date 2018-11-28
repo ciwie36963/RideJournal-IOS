@@ -411,7 +411,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wui-IA-zHW">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="184.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                    <state key="normal" title="Train" backgroundImage="Train">
+                                                    <state key="normal" title="Train(illustrative)" backgroundImage="Train">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                 </button>
@@ -436,7 +436,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ul9-Q9-ObX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1793" y="522"/>
+            <point key="canvasLocation" x="1792.8" y="521.28935532233891"/>
         </scene>
         <!--VehicleDetailsTableViewController-->
         <scene sceneID="tUZ-AK-Jqa">

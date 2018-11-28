@@ -56,30 +56,31 @@ class DashBoardViewController: UIViewController {
     
     //Own functions
     func setChart(dataPoints: [String], values: [Double]) {
-        var emptyDictionary = [Date : Double]()
+        var emptyDictionary : [String : Double] = [:]
         emptyDictionary.removeAll()
         var dataEntry = ChartDataEntry()
-        
-        
+        var keys = [String]()
+        rides.sort(by: {$0.date < $1.date})
         for i in 0..<rides.count {
-            let currentKey = emptyDictionary[rides[i].date]
-         //   print(currentKey)
+            let date = ScreenFormatter.date(rides[i].date)
+            let currentKey = emptyDictionary[date]
             if var currentKeyUn = currentKey {
                 
                 currentKeyUn += (rides[i].distanceRide / 1000)
-                emptyDictionary[rides[i].date] = currentKeyUn
+                emptyDictionary[date] = currentKeyUn
             } else {
-             //   print(rides[i].date)
-                emptyDictionary[rides[i].date] = (rides[i].distanceRide / 1000)
-          //      print(emptyDictionary)
+                print(keys)
+                print(rides[i].date)
+                emptyDictionary[date] = (rides[i].distanceRide / 1000)
             }
             
         }
         
+       
         var co = 0
-    //    print(emptyDictionary)
-        for (_, value) in emptyDictionary {
+        for (key, value) in emptyDictionary {
             co+=1
+            keys.append(key)
             dataEntry = ChartDataEntry(x: Double(co), y: value)
             lineChartEntries.append(dataEntry)
             
@@ -89,7 +90,7 @@ class DashBoardViewController: UIViewController {
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartDataSet.circleColors = [NSUIColor.red]
         
-        lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dataPoints)
+        lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:keys)
         lineChartView.xAxis.granularity = 1
         
         lineChartView.data = lineChartData
