@@ -23,7 +23,6 @@ class DashBoardViewController: UIViewController {
     var rides = [Ride]()
     var distances = [Double]()
     var dates = [String]()
-    var lineChartEntries = [ChartDataEntry]()
     var counter : Int = 0
     var currentDate : String!
     var sumDistance : Double = 0.0
@@ -36,6 +35,7 @@ class DashBoardViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         if ((Ride.loadRides()) == nil || Ride.loadRides()?.isEmpty == true) {
             let alert = UIAlertController(title: "No Rides", message: "There is not enough information to display", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
@@ -57,6 +57,7 @@ class DashBoardViewController: UIViewController {
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
+        var lineChartEntries = [ChartDataEntry]()
         var emptyDictionary : [String : Double] = [:]
         emptyDictionary.removeAll()
         var dataEntry = ChartDataEntry()
@@ -76,22 +77,23 @@ class DashBoardViewController: UIViewController {
             }
             
         }
+        
         var co = 0
         for (key, value) in emptyDictionary {
             co+=1
+            print(key)
             keys.append(key)
             dataEntry = ChartDataEntry(x: Double(co), y: value)
             lineChartEntries.append(dataEntry)
             
         }
-        
+        keys.reverse()
         let lineChartDataSet = LineChartDataSet(values: lineChartEntries, label: "Distance travelled")
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartDataSet.circleColors = [NSUIColor.red]
         
         lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:keys)
         lineChartView.xAxis.granularity = 1
-        
         lineChartView.data = lineChartData
         print(lineChartView.data!)
     }
@@ -128,7 +130,7 @@ class DashBoardViewController: UIViewController {
     func calculateTotalDistance() -> Double {
         sumDistance = 0.0
         for i in 0..<rides.count {
-            sumDistance += (rides[i].distanceRide/1000)
+            sumDistance += (rides[i].distanceRide)
         }
         return sumDistance
     }

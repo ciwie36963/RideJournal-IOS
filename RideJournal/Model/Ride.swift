@@ -22,13 +22,13 @@ class Ride : NSObject, NSCoding {
     var time: Int
     var date: Date
     
-    init(distanceRide: Double, vehicle : VehicleType, moneySaved : Double, rideToWork : Bool, time : Int, date: Date) {
+    init(distanceRide: Double = 0, vehicle : VehicleType, moneySaved : Double = 0, rideToWork : Bool, time : Int = 0) {
         self.distanceRide = distanceRide
         self.vehicle = vehicle
         self.moneySaved = moneySaved
         self.rideToWork = rideToWork
         self.time = time
-        self.date = date
+        self.date = Date.init()
     }
     
     struct PropertyKey {
@@ -100,7 +100,8 @@ class Ride : NSObject, NSCoding {
         let time = aDecoder.decodeInteger(forKey: PropertyKey.time) as Int
         let date = aDecoder.decodeObject(forKey: PropertyKey.date) as! Date
         
-        self.init(distanceRide : distanceRide, vehicle : vehicle!, moneySaved : moneySaved, rideToWork : rideToWork, time : time, date : date)
+        self.init(distanceRide : distanceRide, vehicle : vehicle!, moneySaved : moneySaved, rideToWork : rideToWork, time : time)
+        self.date = date
     }
     
     func encode(with aCoder: NSCoder) {

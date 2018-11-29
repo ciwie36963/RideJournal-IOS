@@ -24,8 +24,7 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     var distance = Measurement(value: 0, unit: UnitLength.meters)
     var timer: Timer?
     var seconds = 0
-    var bike : Bike?
-    var car : Car?
+    var vehicle : Vehicle!
     var ride : Ride?
     var rides = [Ride]()
     
@@ -96,17 +95,11 @@ class RideViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     
     func saveTheRide() {
         var moneySaved = 0.0//init
+        moneySaved = (ride?.calculateMoneySaved(distance: distance.value, refundTravelExpensesPerKm: vehicle.refundTravelExpensesPerKm, fuelUsagePerKm: vehicle.fuelUsagePerKm, fuelPriceSpecificCar: vehicle.fuelPriceCar))!
         
-        if (car?.refundTravelExpensesPerKm == nil) {
-            //als die travelExpenses bij auto niet bestaan is het een fiets
-            moneySaved = (ride?.calculateMoneySaved(distance: distance.value, refundTravelExpensesPerKm: (bike?.refundTravelExpensesPerKm)!, fuelUsagePerKm: (bike?.fuelUsageOfCarNotUsed)!, fuelPriceSpecificCar: (bike?.fuelPriceCar)!))!
-        } else if (bike?.refundTravelExpensesPerKm == nil) {
-            //als die travelExpenses bij fiets niet bestaan is het een auto
-            moneySaved = (ride?.calculateMoneySaved(distance: distance.value, refundTravelExpensesPerKm: (car?.refundTravelExpensesPerKm)!, fuelUsagePerKm: (car?.fuelUsagePerKm)!, fuelPriceSpecificCar: (car?.fuelPriceCar)!))!
-        }
         
         //je kan enkel zo iets meegeven als je gebruikt maakt van een prepareForUnwind
-        ride = Ride(distanceRide: distance.value, vehicle: (ride?.vehicle)!, moneySaved: moneySaved, rideToWork: (ride?.rideToWork)!, time: seconds, date: (ride?.date)!)
+        ride = Ride(distanceRide: distance.value, vehicle: (ride?.vehicle)!, moneySaved: moneySaved, rideToWork: (ride?.rideToWork)!, time: seconds)
         
         if ((Ride.loadRides()) == nil) {
             rides.append(ride!)

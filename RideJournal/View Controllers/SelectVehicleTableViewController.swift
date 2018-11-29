@@ -18,21 +18,21 @@ class SelectVehicleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        guard let status = Network.reachability?.status else { return }
-        switch status {
-        case .unreachable:
-            let alert = UIAlertController(title: "Internet Connection", message: "There is no valid internet connection", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Quit application", style: .destructive) { _ in
-                exit(0)
-            })
-            present(alert, animated: true)
-        case .wifi:
-            print("wifi ok")
-        case .wwan:
-            print("wwan ok")
-        }
-        
+        /*
+         guard let status = Network.reachability?.status else { return }
+         switch status {
+         case .unreachable:
+         let alert = UIAlertController(title: "Internet Connection", message: "There is no valid internet connection", preferredStyle: .actionSheet)
+         alert.addAction(UIAlertAction(title: "Quit application", style: .destructive) { _ in
+         exit(0)
+         })
+         present(alert, animated: true)
+         case .wifi:
+         print("wifi ok")
+         case .wwan:
+         print("wwan ok")
+         }
+         */
         
         let URL = "https://carbu.com/belgie//index.php/officieleprijs"
         
@@ -44,6 +44,7 @@ class SelectVehicleTableViewController: UITableViewController {
                     let doc: Document = try SwiftSoup.parse(html)
                     for row in try! doc.getElementsByClass("price") {
                         self.pricesGaloline.append(try row.text())
+                        print("prijzen opgehaald")
                     }
                     
                 } catch let error {
@@ -70,14 +71,25 @@ class SelectVehicleTableViewController: UITableViewController {
         let vehicleDetailsTableViewController = segue.destination as! VehicleDetailsTableViewController
         
         if segue.identifier == "bike" {
-            bike = Bike(refundTravelExpensesPerKm: 0, fuelUsageOfCarNotUsed: 0, isBike: true, fuelPriceCar: 0)
-            vehicleDetailsTableViewController.bike = bike;
+            //bike = Bike(isBike: true)
+            vehicleDetailsTableViewController.vehicleType = VehicleType.bike
         } else if segue.identifier == "car" {
-            car = Car(refundTravelExpensesPerKm: 0, fuelUsagePerKm: 0, isCar: true, fuelPriceCar: 0)
-            vehicleDetailsTableViewController.car = car;
+            //car = Car(isCar: true)
+            vehicleDetailsTableViewController.vehicleType = VehicleType.car
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-            vehicleDetailsTableViewController.pricesGaloline = self.pricesGaloline
+            let defaultPrices = UserDefaults.standard
+            if (!self.pricesGaloline.isEmpty) {
+                defaultPrices.set(self.pricesGaloline, forKey: "defaultPrices")
+            }
+            let test = UserDefaults.standard.stringArray(forKey: "defaultPrices") ?? [String]()
+            if (self.pricesGaloline.isEmpty) {
+                print("prices empty maar default gebruikt")
+                vehicleDetailsTableViewController.pricesGaloline = test
+            } else {
+                print("prices niet empty")
+                vehicleDetailsTableViewController.pricesGaloline = self.pricesGaloline
+            }
         }
         )
     }

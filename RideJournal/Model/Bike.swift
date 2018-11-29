@@ -8,16 +8,14 @@
 
 import Foundation
 
-struct Bike {
+struct Bike : Vehicle {
     var refundTravelExpensesPerKm : Double
-    let fuelUsageOfCarNotUsed : Double
-    let isBike : Bool
+    let fuelUsagePerKm : Double
     let fuelPriceCar : Double
     
-    init(refundTravelExpensesPerKm: Double, fuelUsageOfCarNotUsed : Double , isBike : Bool, fuelPriceCar : Double) {
+    init(refundTravelExpensesPerKm: Double = 0, fuelUsagePerKm : Double = 0, fuelPriceCar : Double = 0) {
         self.refundTravelExpensesPerKm = refundTravelExpensesPerKm
-        self.fuelUsageOfCarNotUsed = fuelUsageOfCarNotUsed
-        self.isBike = isBike
+        self.fuelUsagePerKm = fuelUsagePerKm
         self.fuelPriceCar = fuelPriceCar
     }
 }

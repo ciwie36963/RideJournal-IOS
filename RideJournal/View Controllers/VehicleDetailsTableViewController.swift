@@ -69,9 +69,10 @@ class VehicleDetailsTableViewController: UITableViewController, UIPickerViewData
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var pickerView: UIPickerView!
     
-    var car: Car?
-    var bike: Bike?
+    
+    var vehicle : Vehicle!
     var ride : Ride?
+    var vehicleType : VehicleType!
     var pricesGaloline = [String]()
     var pickerViewItems = ["Electric","Diesel", "Super95", "Super98"]
     var super95 : Double = 0.0
@@ -87,12 +88,14 @@ class VehicleDetailsTableViewController: UITableViewController, UIPickerViewData
     override func viewWillAppear(_ animated: Bool) {
         //op andere thread want ophalen duurt een secondje + alert indien site ECHT traag is
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-            if self.pricesGaloline.isEmpty == true {
-                let alert = UIAlertController(title: "Problem retrieving gasoline prices", message: "", preferredStyle: .actionSheet)
-                alert.addAction(UIAlertAction(title: "Back to home screen and wait a couple of seconds", style: .destructive) { _ in
-                    _ = self.navigationController?.popToRootViewController(animated: true)
-                })
-                self.present(alert, animated: true)
+            if (self.pricesGaloline.isEmpty == true) {
+                if (self.pricesGaloline.isEmpty) {
+                    let alert = UIAlertController(title: "Problem retrieving gasoline prices", message: "", preferredStyle: .actionSheet)
+                    alert.addAction(UIAlertAction(title: "Go back to home menu and wait a couple of seconds", style: .destructive) { _ in
+                        _ = self.navigationController?.popToRootViewController(animated: true)
+                    })
+                    self.present(alert, animated: true)
+                }
             } else {
                 self.fixGasolinePrices()
             }
@@ -226,38 +229,24 @@ class VehicleDetailsTableViewController: UITableViewController, UIPickerViewData
         let destination = segue.destination as! RideViewController
         
         if segue.identifier == "save" {
-            if (car?.isCar == true) {
-                let fuelUsagePerKm = Double(carConsumeTextField.text!)
-                var refundTravelExpensesPerKm = 0.0
-                if (travelAllowanceTextField.text != "") {
-                    refundTravelExpensesPerKm = Double(travelAllowanceTextField.text!)!
-                }
-                car = Car(refundTravelExpensesPerKm: refundTravelExpensesPerKm, fuelUsagePerKm: fuelUsagePerKm!, isCar: true, fuelPriceCar: fuelForSpecificCar)
-                destination.car = car
-                if (workSwitch.isOn == true) {
-                    ride = Ride(distanceRide: 0, vehicle: VehicleType.car, moneySaved: 0, rideToWork: true, time: 0, date: Date.init())
-                    destination.ride = ride
-                } else {
-                    ride = Ride(distanceRide: 0, vehicle: VehicleType.car, moneySaved: 0, rideToWork: false, time: 0, date : Date.init())
-                    destination.ride = ride
-                }
-                
-            } else if (bike?.isBike == true) {
-                let fuelUsageOfCarNotUsed = Double(carConsumeTextField.text!)
-                var refundTravelExpensesPerKm = 0.0
-                if (travelAllowanceTextField.text != "") {
-                    refundTravelExpensesPerKm = Double(travelAllowanceTextField.text!)!
-                }
-                bike = Bike(refundTravelExpensesPerKm: refundTravelExpensesPerKm, fuelUsageOfCarNotUsed: fuelUsageOfCarNotUsed!, isBike: true, fuelPriceCar : fuelForSpecificCar)
-                destination.bike = bike
-                if (workSwitch.isOn == true) {
-                    ride = Ride(distanceRide: 0, vehicle: VehicleType.bike, moneySaved: 0, rideToWork: true, time: 0, date : Date.init())
-                    destination.ride = ride
-                } else {
-                    ride = Ride(distanceRide: 0, vehicle: VehicleType.bike, moneySaved: 0, rideToWork: false, time: 0, date : Date.init())
-                    destination.ride = ride
-                }
+            
+            let fuelUsagePerKm = Double(carConsumeTextField.text!)
+            var refundTravelExpensesPerKm = 0.0
+            if (travelAllowanceTextField.text != "") {
+                refundTravelExpensesPerKm = Double(travelAllowanceTextField.text!)!
             }
+            
+            if (vehicleType == VehicleType.car) {
+                vehicle = Car(refundTravelExpensesPerKm: refundTravelExpensesPerKm, fuelUsagePerKm: fuelUsagePerKm!, fuelPriceCar: fuelForSpecificCar)
+                ride = Ride(vehicle: vehicleType, rideToWork: workSwitch.isOn)
+                
+            } else if (vehicleType == VehicleType.bike) {
+                vehicle = Bike(refundTravelExpensesPerKm: refundTravelExpensesPerKm, fuelUsagePerKm: fuelUsagePerKm!, fuelPriceCar : fuelForSpecificCar)
+                ride = Ride(vehicle: vehicleType, rideToWork: workSwitch.isOn)
+                
+            }
+            destination.vehicle = vehicle
+            destination.ride = ride
         }
     }
 }

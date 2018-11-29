@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111E2D3221AFED9100C0B1F0 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111E2D3121AFED9100C0B1F0 /* Vehicle.swift */; };
 		1148BD91219AF59A0080F3FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148BD90219AF59A0080F3FA /* AppDelegate.swift */; };
 		1148BD96219AF59A0080F3FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1148BD94219AF59A0080F3FA /* Main.storyboard */; };
 		1148BD98219AF59B0080F3FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1148BD97219AF59B0080F3FA /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		111E2D3121AFED9100C0B1F0 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		1148BD8D219AF59A0080F3FA /* RideJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1148BD90219AF59A0080F3FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1148BD95219AF59A0080F3FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				11F4AC17219B5E9B008D1496 /* ScreenFormatter.swift */,
 				11EF1425219F0A3900EFB69B /* RideCell.swift */,
 				11CBB48521A5913200BB386D /* Reachability.swift */,
+				111E2D3121AFED9100C0B1F0 /* Vehicle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				11EF1426219F0A3900EFB69B /* RideCell.swift in Sources */,
 				11EF1424219EE99A00EFB69B /* RidesTableViewController.swift in Sources */,
 				11B2D56821A05E1A00091BC0 /* DashBoardViewController.swift in Sources */,
+				111E2D3221AFED9100C0B1F0 /* Vehicle.swift in Sources */,
 				11762300219B05480061125A /* Ride.swift in Sources */,
 				11762304219B05660061125A /* Car.swift in Sources */,
 				116FF251219F4AEF00EC5269 /* MoreTableViewController.swift in Sources */,
