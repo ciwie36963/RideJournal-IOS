@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RideJournal/Model/Ride.swift"
-            timestampString = "565183281.611537"
+            timestampString = "567352673.831777"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "init(coder:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RideJournal/Model/Ride.swift"
-            timestampString = "565183281.615"
+            timestampString = "567352673.8324029"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "calculateMoneySaved(distance:refundTravelExpensesPerKm:fuelUsagePerKm:fuelPriceSpecificCar:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RideJournal/Model/Ride.swift"
-            timestampString = "565183281.615077"
+            timestampString = "567352673.832664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "calculateMoneySaved(distance:refundTravelExpensesPerKm:fuelUsagePerKm:fuelPriceSpecificCar:)"
             landmarkType = "7">
          </BreakpointContent>

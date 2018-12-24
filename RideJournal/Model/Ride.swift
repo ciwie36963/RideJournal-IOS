@@ -46,7 +46,7 @@ class Ride : NSObject, NSCoding {
         if (distance == 0) {
             return 0
         } else {
-            moneySavedNoCar = ((fuelUsagePerKm/100) / (distance/1000)) * fuelPriceSpecificCar //u distance is in meter, daarom /1000 en fuelUsagePerKm is eigenlijk per 100km, daarom /100
+            moneySavedNoCar = ((fuelUsagePerKm / 100) * (distance/1000)) * fuelPriceSpecificCar //regel van drie voor dit te bepalen
         }
         
         if (rideToWork) {

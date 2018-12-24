@@ -18,7 +18,7 @@ class SelectVehicleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
+        //PUT IN COMMENT WHEN USING ON EMULATOR BECAUSE DOESN'T WORK WITH EMU
          guard let status = Network.reachability?.status else { return }
          switch status {
          case .unreachable:
@@ -32,7 +32,10 @@ class SelectVehicleTableViewController: UITableViewController {
          case .wwan:
          print("wwan ok")
          }
-         */
+ 
+        
+        
+        
         
         let URL = "https://carbu.com/belgie//index.php/officieleprijs"
         
